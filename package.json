@@ -1,0 +1,30 @@
+{
+  "name": "gsg-dealership-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-Projects/GSG-dealership-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GSG-Projects/GSG-dealership-frontend/issues"
+  },
+  "homepage": "https://github.com/GSG-Projects/GSG-dealership-frontend#readme",
+  "dependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "next": "^15.1.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
