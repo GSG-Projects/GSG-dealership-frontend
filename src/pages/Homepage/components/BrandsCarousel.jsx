@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './BrandsCarousel.css';
 
 export default function BrandsCarousel() {
     const [brands, setBrands] = useState([]);
@@ -19,15 +20,25 @@ export default function BrandsCarousel() {
     }, []);
 
    return(
-    <div className="bg-gradient-to-b from-neutral-900 to-neutral-800 h-52 py-7 flex">
-        {brands.map((brand) => (
-            <img 
-                className="h-full aspect-square mx-4"
-                key={brand.id} 
-                src={brand.image} 
-                alt={brand.name} 
-            />
-        ))}
+    <div className="bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden">
+        <div className="carousel-track relative h-52 py-7 gap-20 flex animate-scroll">
+            {brands.map((brand, index) => (
+                <img 
+                    className="max-w-60 object-contain mx-4"
+                    key={index} 
+                    src={brand.image} 
+                    alt={brand.name} 
+                />
+            ))}
+            {brands.map((brand, index) => (
+                <img 
+                    className="max-w-60 object-contain mx-4"
+                    key={index + brands.length} 
+                    src={brand.image} 
+                    alt={brand.name} 
+                />
+            ))}
+        </div>
     </div>
    ); 
 }
