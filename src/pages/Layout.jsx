@@ -10,7 +10,7 @@ function Layout() {
       <main className="main-content">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

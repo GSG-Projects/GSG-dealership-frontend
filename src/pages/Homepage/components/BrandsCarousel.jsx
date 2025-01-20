@@ -55,7 +55,7 @@ export default function BrandsCarousel() {
    return(
     <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden h-52">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
-        <motion.div className="absolute left-0 h-52 py-7 gap-32 flex overflow-visible " ref={ref} style={{x: xTranslation}}>
+        <motion.div className="absolute left-0 h-52 py-7 gap-32 flex overflow-visible" ref={ref} style={{x: xTranslation}}>
             {[...items, ...items].map((brand, index) => (
                 <img 
                     className="max-w-60 object-contain mx-4"

@@ -8,12 +8,9 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      {/* Layout principale */}
       <Route path="/" element={<Layout />}>
-        {/* Pagine all'interno del layout */}
         <Route index element={<Homepage />} />
         <Route path="/about" element={<About />} />
-        {/* Puoi aggiungere altre pagine qui */}
       </Route>
     </Routes>
   );
