@@ -58,7 +58,7 @@ export default function Jumbotron () {
                 alt={IMAGES[currentImageIndex].title}
             />
             {/* Text */}
-            <div className='z-20 absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-white scale-110'> 
+            <div className='z-20 absolute top-1/3 left-1/4 transform -translate-x-3/4 -translate-y-1/2 text-white scale-110'> 
                 <h1 className='text-5xl font-oswald'>
                     Le nostre Auto
                 </h1>

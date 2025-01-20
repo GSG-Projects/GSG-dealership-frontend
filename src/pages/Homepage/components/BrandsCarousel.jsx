@@ -1,8 +1,27 @@
 import { useEffect, useState } from "react";
-import './BrandsCarousel.css';
+import { useMeasure } from "@uidotdev/usehooks";
+import { motion, useMotionValue } from "framer-motion";
+import { animate } from "motion";
 
 export default function BrandsCarousel() {
+    let [ref, { width }] = useMeasure();
     const [brands, setBrands] = useState([]);
+
+    const xTranslation = useMotionValue(0);
+
+    useEffect(() => {
+        let controls;
+        let finalPosition = -(width / 2) - 128/2;
+
+        controls = animate(xTranslation,[0, finalPosition], {
+            ease: 'linear',
+            duration: 40,
+            repeat: Infinity,
+            repeatType: 'loop',
+            repeatDelay: 0
+        });
+        return controls.stop;
+    }, [xTranslation, width]);
 
     useEffect(() => {
         async function getBrands() {
@@ -20,9 +39,10 @@ export default function BrandsCarousel() {
     }, []);
 
    return(
-    <div className="bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden">
-        <div className="carousel-track relative h-52 py-7 gap-20 flex animate-scroll">
-            {brands.map((brand, index) => (
+    <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden h-52">
+        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
+        <motion.div className="absolute left-0 h-52 py-7 gap-32 flex overflow-visible " ref={ref} style={{x: xTranslation}}>
+            {[...brands, ...brands].map((brand, index) => (
                 <img 
                     className="max-w-60 object-contain mx-4"
                     key={index} 
@@ -30,15 +50,7 @@ export default function BrandsCarousel() {
                     alt={brand.name} 
                 />
             ))}
-            {brands.map((brand, index) => (
-                <img 
-                    className="max-w-60 object-contain mx-4"
-                    key={index + brands.length} 
-                    src={brand.image} 
-                    alt={brand.name} 
-                />
-            ))}
-        </div>
+        </motion.div>
     </div>
    ); 
 }
