@@ -1,12 +1,13 @@
 import React from 'react';
 import './Homepage.css';
+import Jumbotron from './components/Jumbotron';
+import BrandsCarousel from './components/BrandsCarousel';
 
-function Homepage() {
+export default function Homepage() {
     return (
-        <div className="homepage">
-            <h1>Pagina principale della concessionaria</h1>
-        </div>
+        <>
+            <Jumbotron />
+            <BrandsCarousel />
+        </>
     );
 }
-
-export default Homepage;

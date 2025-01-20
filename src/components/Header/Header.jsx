@@ -37,7 +37,7 @@ function Header() {
         </NavLink>
 
         <div className='w-1/3 justify-end flex'>
-          <button className='bg-red-500 text-white px-4 py-1 rounded'>
+          <button className=' text-white px-4 py-1 rounded'>
             Sign Up
           </button>
         </div>
