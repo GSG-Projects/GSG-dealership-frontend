@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useMeasure } from "@uidotdev/usehooks";
 import { motion, useMotionValue } from "framer-motion";
 import { animate } from "motion";
+import { fetchBrands } from '../../../store/Brands';
+import { useDispatch, useSelector } from "react-redux";
 
 export default function BrandsCarousel() {
     let [ref, { width }] = useMeasure();
-    const [brands, setBrands] = useState([]);
 
     const xTranslation = useMotionValue(0);
 
@@ -15,7 +16,7 @@ export default function BrandsCarousel() {
 
         controls = animate(xTranslation,[0, finalPosition], {
             ease: 'linear',
-            duration: 40,
+            duration: 50,
             repeat: Infinity,
             repeatType: 'loop',
             repeatDelay: 0
@@ -23,26 +24,23 @@ export default function BrandsCarousel() {
         return controls.stop;
     }, [xTranslation, width]);
 
+    const dispatch = useDispatch();
+    const { items, status, error } = useSelector((state) => state.brands);
+    
     useEffect(() => {
-        async function getBrands() {
-        try{
-            const response = await fetch('http://127.0.0.1:8000/api/brands');
-            const data = await response.json();
-            setBrands(data);
-            console.log(data);
-        } catch (error) {
-            console.error('Errore nel fetch dei dati', error);
+        if (status === 'idle') {
+        dispatch(fetchBrands());
         }
-    }
+    }, [dispatch, status]);
 
-    getBrands();
-    }, []);
+    if (status === 'loading') return <p>Loading...</p>;
+    if (status === 'failed') return <p>Error: {error}</p>;
 
    return(
     <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden h-52">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
         <motion.div className="absolute left-0 h-52 py-7 gap-32 flex overflow-visible " ref={ref} style={{x: xTranslation}}>
-            {[...brands, ...brands].map((brand, index) => (
+            {[...items, ...items].map((brand, index) => (
                 <img 
                     className="max-w-60 object-contain mx-4"
                     key={index} 
