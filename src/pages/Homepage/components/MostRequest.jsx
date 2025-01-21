@@ -14,7 +14,7 @@ export default function MostRequest() {
     }, [items]);
 
     const handleClick = (index) => {
-        setCurrentIndex(index);
+        setCurrentIndex((prevIndex) => prevIndex = index);
     };
 
     useEffect(() => {
@@ -43,37 +43,43 @@ export default function MostRequest() {
     }
 
     return (
-        <div className="h-screen relative bg-black overflow-visible">
-            <div className="bg-gradient-to-r from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 -translate-x-1/2 py-8 w-1/4 border border-white absolute bottom-0 left-1/2 z-10 text-center">
-                <h1 className="uppercase font-bold w-full text-white font-sans">
-                    Modelli più richiesti
-                </h1>
-                {filteredModels.length > 0 && (
-                    <p className="uppercase text-white w-full font-bold text-6xl font-oswald">
-                        {filteredModels[currentIndex]?.name}
-                    </p>
-                )}
+        <>
+            <div className="h-screen relative bg-black overflow-visible">
+                <div className="bg-gradient-to-r from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 -translate-x-1/2 py-8 w-1/4 border border-white absolute bottom-0 left-1/2 z-10 text-center ">
+                    <h1 className="uppercase font-bold w-full text-white font-sans">
+                        Modelli più richiesti
+                    </h1>
+                    {filteredModels.length > 0 && (
+                        <p className="uppercase text-white w-full font-bold text-6xl font-oswald ">
+                            {filteredModels[currentIndex]?.name}
+                        </p>
+                    )}
+                   
+                </div>
+                <div className="absolute left-0 top-0 flex h-full w-full">
+                    {
+                        filteredModels.map((model, index) => (
+                            <div
+                                key={index}
+                                onMouseEnter={() => handleClick(index)}
+                                className={`transition-all h-full flex ease-in-out duration-500 overflow-hidden shadow-inner ${
+                                    index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"
+                                }`}
+                                style={{
+                                    clipPath: `${index === currentIndex ? 'polygon(13% 0, 100% 0, 87% 100%, 0 100%)' : 'polygon(40% 0, 100% 0, 60% 100%, 0 100%)'}`,
+                                }}
+                            >
+                                <img 
+                                    className={`w-full object-cover transition-all ease-in-out duration-700 ${index === currentIndex ? ' saturate-100 scale-100' : 'saturate-0 scale-150'}`}
+                                    key={model.name} 
+                                    src={model.image} 
+                                    alt={model.name}
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-            <div className="absolute left-0 top-0 flex h-full w-full">
-                {filteredModels.map((model, index) => (
-                    <div
-                        key={index}
-                        onMouseEnter={() => handleClick(index)}
-                        className={`transition-all h-full flex ease-in-out duration-500 overflow-hidden shadow-inner ${
-                            index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"
-                        }`}
-                        style={{
-                            clipPath: `${index === currentIndex ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}`,
-                        }}
-                    >
-                        <img 
-                            className={`w-full object-cover transition-all ease-in-out duration-700 ${index === currentIndex ? 'saturate-100 scale-100' : 'saturate-0 scale-150'}`}
-                            src={model.image} 
-                            alt={model.name}
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
+        </>
     );
 }
