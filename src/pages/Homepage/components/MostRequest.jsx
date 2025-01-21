@@ -1,51 +1,27 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchModels } from "../../../store/CarModels";
-import { animate } from "motion";
-import { motion, useMotionValue } from "framer-motion";
-import { useMeasure } from "@uidotdev/usehooks";
 
-export default function MoreRequest() {
+export default function MostRequest() {
     const dispatch = useDispatch();
     const { items, status, error } = useSelector((state) => state.models);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [filteredModels, setFilteredModels] = useState([]);
 
-    let [ref, { width }] = useMeasure();
-    const xTranslation = useMotionValue(0);
-
     useEffect(() => {
         setFilteredModels(items.filter((model) => model.most_request === 1));
     }, [items]);
 
-    const handleNext = () => {
-        setCurrentIndex((prev) => 
-            prev === filteredModels.length - 1 ? 0 : prev + 1
-        );
+    const handleClick = (index) => {
+        setCurrentIndex(index);
     };
 
-    const handlePrev = () => {
-        let controls;
-        let finalPosition = width;
-
-        setCurrentIndex((prev) => 
-            prev === 0 ? filteredModels.length - 1 : prev - 1
-        );
-
-        controls = animate(xTranslation, [0, finalPosition], {
-            ease: 'linear',
-            duration: 2,
-        })
-    };
-    
     useEffect(() => {
         if (status === 'idle') {
-        dispatch(fetchModels());
+            dispatch(fetchModels());
         }
     }, [dispatch, status]);
-
-    console.log(filteredModels);
 
     if (status === 'loading') {
         return (
@@ -61,68 +37,42 @@ export default function MoreRequest() {
             </div>
         );
     }
+
     if (status === 'failed') {
         return <p>Error: {error}</p>;
     }
 
-    return(
-        <div className="h-screen relative bg-black">
-            <motion.div className="absolute left-0 top-0 flex h-full w-full overflow-hidden" ref={ref}>
+    return (
+        <div className="h-screen relative bg-black overflow-visible">
+            <div className="bg-gradient-to-r from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 -translate-x-1/2 py-8 w-1/4 border border-white absolute bottom-0 left-1/2 z-10 text-center">
+                <h1 className="uppercase font-bold w-full text-white font-sans">
+                    Modelli più richiesti
+                </h1>
                 {filteredModels.length > 0 && (
-                    <>
-                        <img
-                            className="object-cover w-1/12 h-full opacity-50"
-                            key={filteredModels[(currentIndex + 2 + filteredModels.length) % filteredModels.length]?.name}
-                            src={filteredModels[(currentIndex + 2 + filteredModels.length) % filteredModels.length]?.image}
-                            alt={filteredModels[(currentIndex + 2 + filteredModels.length) % filteredModels.length]?.name}
-                        />
-                        <img
-                            className="object-cover w-4/12 h-full opacity-50"
-                            key={filteredModels[(currentIndex + 1 + filteredModels.length) % filteredModels.length]?.name}
-                            src={filteredModels[(currentIndex + 1 + filteredModels.length) % filteredModels.length]?.image}
-                            alt={filteredModels[(currentIndex + 1 + filteredModels.length) % filteredModels.length]?.name}
-                        />
-                        <img
-                            style={{x: xTranslation}}
-                            className="object-cover w-7/12 h-full"
-                            key={filteredModels[currentIndex].name}
-                            src={filteredModels[currentIndex].image}
-                            alt={filteredModels[currentIndex].name}
-                        />
-                    </>
+                    <p className="uppercase text-white w-full font-bold text-6xl font-oswald">
+                        {filteredModels[currentIndex]?.name}
+                    </p>
                 )}
-            </motion.div>
-            <div className="absolute top-36 left-64">
-                <div className="w-full">
-                    <h1 className="uppercase mb-6 font-bold text-3xl">
-                        Modelli più richiesti
-                    </h1>
-                    {filteredModels.length > 0 && (
-                        <div>
-                            <div className="flex mb-52">
-                                <button 
-                                    onClick={handlePrev}
-                                    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition-colors"
-                                >
-                                    Indietro
-                                </button>
-                                <button 
-                                    onClick={handleNext}
-                                    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition-colors"
-                                >
-                                    Avanti
-                                </button>
-                            </div>
-                            
-                            <p className="uppercase font-bold text-xl">
-                                Brand
-                            </p>
-                            <p className="uppercase font-bold text-8xl">
-                                {filteredModels[currentIndex].name}
-                            </p>
-                        </div>
-                    )}
-                </div>
+            </div>
+            <div className="absolute left-0 top-0 flex h-full w-full">
+                {filteredModels.map((model, index) => (
+                    <div
+                        key={index}
+                        onMouseEnter={() => handleClick(index)}
+                        className={`transition-all h-full flex ease-in-out duration-500 overflow-hidden shadow-inner ${
+                            index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"
+                        }`}
+                        style={{
+                            clipPath: `${index === currentIndex ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}`,
+                        }}
+                    >
+                        <img 
+                            className={`w-full object-cover transition-all ease-in-out duration-700 ${index === currentIndex ? 'saturate-100 scale-100' : 'saturate-0 scale-150'}`}
+                            src={model.image} 
+                            alt={model.name}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
