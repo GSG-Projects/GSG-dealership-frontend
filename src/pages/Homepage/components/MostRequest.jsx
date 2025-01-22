@@ -25,6 +25,27 @@ export default function MostRequest() {
     const [buttonClickStates, setButtonClickStates] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [filteredModels, setFilteredModels] = useState([]);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    
+    const handleMouseMove = (e) => {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        const x = (e.clientX - windowWidth / 2) / windowWidth;
+        const y = (e.clientY - windowHeight / 2) / windowHeight;
+
+        setOffset({
+        x: -x * 15,
+        y: -y * 15,
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, [])
 
 
     useEffect(() => {
@@ -194,6 +215,14 @@ export default function MostRequest() {
                                 className={`w-full object-cover transition-all ease-in-out duration-700 ${
                                     index === currentIndex ? 'saturate-100 scale-100' : 'saturate-0 scale-150'
                                 }`}
+                                style={{
+                                    ...(index === currentIndex
+                                      ? {
+                                          transform: `translate(${offset.x}px, ${offset.y}px)`,
+                                          transition: "transform 0.1s ease-out",
+                                        }
+                                      : {}),
+                                }}
                                 src={model.image}
                                 alt={model.name}
                             />
