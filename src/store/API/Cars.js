@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Funzioni asincrone (API calls) con createAsyncThunk
 export const fetchCars = createAsyncThunk('cars/fetch', async () => {
-  const response = await fetch('http://127.0.0.1:8000/api/car-cars');
+  const response = await fetch('http://127.0.0.1:8000/api/cars');
   if (!response.ok) {
     throw new Error('Errore durante il fetch delle macchine');
   }
@@ -10,7 +10,7 @@ export const fetchCars = createAsyncThunk('cars/fetch', async () => {
 });
 
 export const addCar = createAsyncThunk('cars/add', async (newCar) => {
-  const response = await fetch('http://127.0.0.1:8000/api/car-cars', {
+  const response = await fetch('http://127.0.0.1:8000/api/cars', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newCar),

@@ -1,25 +1,32 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { fetchModels } from "../../../store/API/CarModels";
 import { fetchBrands } from "../../../store/API/Brands";
+import { fetchCars } from "../../../store/API/Cars";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './MostRequest.css';
-import ButtonModels from "./ButtonModels";
-import ModelName from "./ModelName";
+
+import ButtonModels from "./MostRequest/ButtonModels";
+import ModelName from "./MostRequest/ModelName";
 import Loading from "../../../components/Loading";
+import ModelInfo from "./MostRequest/ModelInfo";
 
 export default function MostRequest() {
     const dispatch = useDispatch();
     const { items: models, status: modelsStatus, error: modelsError } = useSelector((state) => state.models);
     const { items: brands, status: brandsStatus, error: brandsError } = useSelector((state) => state.brands);
+    const { items: cars, status: carsStatus, error: carsError } = useSelector((state) => state.cars);
 
     const [currentBrand, setCurrentBrand] = useState(null);
+    const [currentCar, setCurrentCar] = useState(null);
     const [buttonClickStates, setButtonClickStates] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [filteredModels, setFilteredModels] = useState([]);
 
-    // Fetch models and brands on initial render
+
     useEffect(() => {
         if (modelsStatus === 'idle') {
             dispatch(fetchModels());
@@ -27,9 +34,11 @@ export default function MostRequest() {
         if (brandsStatus === 'idle') {
             dispatch(fetchBrands());
         }
-    }, [dispatch, modelsStatus, brandsStatus]);
+        if (carsStatus === 'idle') {
+            dispatch(fetchCars());
+        }
+    }, [dispatch, modelsStatus, brandsStatus, carsStatus]);
 
-    // Filter most requested models once models are loaded
     useEffect(() => {
         if (models.length > 0) {
             const mostRequested = models.filter((model) => model.most_request === 1);
@@ -38,7 +47,6 @@ export default function MostRequest() {
         }
     }, [models]);
 
-    // Update currentBrand when currentIndex changes
     useEffect(() => {
         setTimeout(() => {
             if (filteredModels.length > 0 && brands.length > 0) {
@@ -49,9 +57,23 @@ export default function MostRequest() {
         }, 200)
     }, [currentIndex, filteredModels, brands]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            if (filteredModels.length > 0 && cars.length > 0) {
+                const currentModel = filteredModels[currentIndex];
+                console.log(currentModel);
+                const car = cars.find((b) => b.id === currentModel.id);
+                setCurrentCar(car);
+            }
+        }, 200)
+    }, [currentIndex, filteredModels, cars]);
+
     const handleHover = (index) => {
         setCurrentIndex(index);
     };
+
+    console.log(cars);
+
 
     const handleButtonClick = (index) => {
         setButtonClickStates((prevStates) => {
@@ -69,7 +91,7 @@ export default function MostRequest() {
         });
     };
 
-    if (modelsStatus === 'loading' || brandsStatus === 'loading') {
+    if (modelsStatus === 'loading' || brandsStatus === 'loading' || carsStatus === 'loading') {
         return <Loading />;
     }
 
@@ -79,6 +101,10 @@ export default function MostRequest() {
 
     if (brandsStatus === 'failed') {
         return <p>Error loading brands: {brandsError}</p>;
+    }
+
+    if (carsStatus === 'failed') {
+        return <p>Error loading cars: {carsError}</p>;
     }
 
     return (
@@ -95,9 +121,9 @@ export default function MostRequest() {
                             key={index}
                             onMouseEnter={() => handleHover(index)}
                             onMouseLeave={() => handleMouseLeave(index)}
-                            className={`transition-all relative h-full flex ease-in-out duration-500 overflow-hidden shadow-inner ${
-                                index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"
-                            }`}
+                            className={`transition-all relative h-full flex ease-in-out duration-500 overflow-hidden shadow-inner 
+                                ${index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"}`
+                            }
                             style={{
                                 clipPath: `${index === currentIndex ? 'polygon(13% 0, 100% 0, 87% 100%, 0 100%)' : 'polygon(40% 0, 100% 0, 60% 100%, 0 100%)'}`,
                             }}
@@ -108,9 +134,10 @@ export default function MostRequest() {
                                 key={index}
                                 currentIndex={currentIndex}
                                 index={index}
+                                buttonClickStates={buttonClickStates}
                             >
                                 <FontAwesomeIcon
-                                    className={`${buttonClickStates[index] ? 'rotate-90' : ''} transition-transform duration-300`}
+                                    className={`${buttonClickStates[index] ? '-rotate-90 text-black' : 'text-neutral-300'} transition-transform duration-300`}
                                     icon={faChevronRight}
                                 />
                             </ButtonModels>
@@ -118,53 +145,47 @@ export default function MostRequest() {
                             {/* Infos */}
                             <div
                                 className={`absolute top-0 left-0 z-10 transition-all ease-in-out duration-300 ${
-                                    buttonClickStates[index] ? 'w-1/2 h-full bg-black/50' : 'w-0 opacity-0 h-full bg-black/50'
+                                    buttonClickStates[index] ? 'w-1/2 h-full bg-black/65' : 'w-0 opacity-0 h-full bg-black/50'
                                 }`}
                                 style={{
                                     clipPath: 'polygon(0% 0, 100% 0, 74% 100%, 0 100%)',
                                 }}
                             >
                                 <div className="m-auto w-full mt-40 text-white font-oswald uppercase">
-                                    <div className="mb-14">
-                                        <h1 className="text-4xl bg-gradient-to-r from-black to-transparent font-bold py-2 pl-[160px]">
-                                            Brand
-                                        </h1>
-                                        <h2 className="text-3xl ml-[160px]">
-                                            {currentBrand?.name || "Loading..."}
-                                        </h2>
-                                    </div>
-                                    <div className="mb-14">
-                                        <h1 className="text-4xl bg-gradient-to-r from-black to-transparent font-bold py-2 pl-[120px]">
-                                            Descrizione
-                                        </h1>
-                                        <h2 className="text-3xl ml-[120px]">
-                                            {currentBrand?.name || "Loading..."}
-                                        </h2>
-                                    </div>
-                                    <div className="mb-14">
-                                        <h1 className="text-4xl bg-gradient-to-r from-black to-transparent font-bold py-2 pl-[120px]">
-                                            Cilindrata
-                                        </h1>
-                                        <h2 className="text-3xl ml-[120px]">
-                                            {currentBrand?.name || "Loading..."}
-                                        </h2>
-                                    </div>
-                                    <div className="mb-14">
-                                        <h1 className="text-4xl bg-gradient-to-r from-black to-transparent font-bold py-2 pl-[100px]">
-                                            Potenza
-                                        </h1>
-                                        <h2 className="text-3xl ml-[100px]">
-                                            {currentBrand?.name || "Loading..."}
-                                        </h2>
-                                    </div>
-                                    <div className="mb-14">
-                                        <h1 className="text-4xl bg-gradient-to-r from-black to-transparent font-bold py-2 pl-[80px]">
-                                            Prezzo base
-                                        </h1>
-                                        <h2 className="text-3xl ml-[80px]">
-                                            {currentBrand?.name || "Loading..."}
-                                        </h2>
-                                    </div>
+                                    <ModelInfo
+                                        brandName={currentBrand?.name}
+                                        distanceCss={'pl-[140px]'}
+                                    >
+                                        Brand
+                                    </ModelInfo>
+                                    <ModelInfo
+                                        brandName={currentBrand?.name}
+                                        distanceCss={'pl-[120px]'}
+                                        carInfo={currentCar?.fuel_type}
+                                    >
+                                        Carburante
+                                    </ModelInfo>
+                                    <ModelInfo
+                                        brandName={currentBrand?.name}
+                                        distanceCss={'pl-[100px]'}
+                                        carInfo={currentCar?.engine_capacity}
+                                    >
+                                        Cilindrata
+                                    </ModelInfo>
+                                    <ModelInfo
+                                        brandName={currentBrand?.name}
+                                        distanceCss={'pl-[80px]'}
+                                        carInfo={currentCar?.power_kw}
+                                    >
+                                        Potenza
+                                    </ModelInfo>
+                                    <ModelInfo
+                                        brandName={currentBrand?.name}
+                                        distanceCss={'pl-[60px]'}
+                                        carInfo={currentCar?.base_price}
+                                    >
+                                        Prezzo base
+                                    </ModelInfo>
                                 </div>
                             </div>
 
@@ -176,7 +197,8 @@ export default function MostRequest() {
                                 src={model.image}
                                 alt={model.name}
                             />
-                             {/* Name Model */}
+
+                            {/* Name Model */}
                             <ModelName
                                 key={filteredModels[currentIndex]?.name}
                                 filteredModels={filteredModels}
