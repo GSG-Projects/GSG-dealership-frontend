@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useMeasure } from "@uidotdev/usehooks";
 import { motion, useMotionValue } from "framer-motion";
 import { animate } from "motion";
-import { fetchBrands } from '../../../store/Brands';
+import { fetchBrands } from '../../../store/API/Brands';
 import { useDispatch, useSelector } from "react-redux";
 
 export default function BrandsCarousel() {

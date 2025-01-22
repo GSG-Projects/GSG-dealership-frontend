@@ -1,15 +1,14 @@
-export default function ModelName({filteredModels, currentIndex,}) {
+export default function ModelName({filteredModels, currentIndex, index}) {
     return(
         <div 
-            className="bg-gradient-to-r from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 -translate-x-1/2 py-8 w-1/4 outline-1 outline-white absolute bottom-0 left-1/2 z-30 text-center"
+            className={`bg-gradient-to-r from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 py-8 outline-1 outline-white absolute bottom-0 right-[10%] z-30 text-center transition-all ease-in-out duration-300 
+                ${currentIndex === index ? 'w-5/12 opacity-100' : 'w-0 opacity-0'}`
+            }
             style={{
-                clipPath: 'polygon(13% 0, 87% 0, 100% 100%, 0 100%)',
+                clipPath: 'polygon(5% 0, 100% 0, 95% 100%, 0 100%)',
                 border: '1px solid white'
             }}
         >
-            <h1 className="uppercase font-bold w-full text-white font-sans">
-                Modelli più richiesti
-            </h1>
             {filteredModels.length > 0 && (
                 <p
                     className="model-name uppercase text-white w-full font-bold text-6xl font-oswald"
