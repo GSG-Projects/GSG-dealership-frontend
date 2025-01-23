@@ -1,12 +1,7 @@
-import React from 'react';
-import './Footer.css';
-
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="h-56 bg-gradient-to-b from-black to-neutral-900">
       <p>&copy; 2025 GSG Dealership. All Rights Reserved.</p>
     </footer>
   );
 }
-
-export default Footer;

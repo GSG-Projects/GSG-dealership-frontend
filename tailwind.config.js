@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         oswald: ['Oswald', 'sans-serif'],
+        kanit: ['Kanit', 'sans-serif'],
+        montserrat: ['montserrat', 'sans-serif']
       },
     },
   },

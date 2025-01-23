@@ -35,7 +35,7 @@ export default function BrandsCarousel() {
 
     if (status === 'loading') {
         return (
-            <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden h-52 flex justify-center items-center">
+            <div className="relative bg-gradient-to-b from-neutral-800 to-neutral-950 overflow-hidden h-52 flex justify-center items-center">
             <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
             <div
                 className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-neutral-100 motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -53,7 +53,7 @@ export default function BrandsCarousel() {
     if (status === 'failed') return <p>Error: {error}</p>;
 
    return(
-    <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 overflow-hidden h-52">
+    <div className="relative bg-gradient-to-b from-neutral-800 to-neutral-950 overflow-hidden h-52">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
         <motion.div className="absolute left-0 h-52 py-7 gap-32 flex overflow-visible" ref={ref} style={{x: xTranslation}}>
             {[...items, ...items].map((brand, index) => (
