@@ -11,7 +11,7 @@ export default function ModelName({filteredModels, currentIndex, index}) {
         >
             {filteredModels.length > 0 && (
                 <p
-                    className="model-name uppercase text-white w-full font-bold text-6xl font-oswald"
+                    className="uppercase italic text-white w-full font-bold text-6xl font-oswald"
                 >
                     {filteredModels[currentIndex]?.name}
                 </p>

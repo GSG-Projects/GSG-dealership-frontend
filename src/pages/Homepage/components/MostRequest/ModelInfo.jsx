@@ -5,10 +5,12 @@ export default function ModelInfo({children, brandName, distanceCss, carInfo}) {
                 {children}
             </h1>
             <h2 className={`text-3xl ${distanceCss}`}>
-                {   children == 'Brand' ?
-                    brandName || "Loading..." 
-                    :
-                    carInfo || "Loading..." 
+            {
+                    children === 'Brand' 
+                    ? (brandName || "Loading...")
+                    : children === 'Prezzo base'
+                    ? (carInfo ? `€ ${carInfo}` : "Loading...")
+                    : (carInfo)
                 }
             </h2>
         </div>

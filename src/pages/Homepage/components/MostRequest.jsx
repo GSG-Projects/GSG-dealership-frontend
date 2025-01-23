@@ -130,7 +130,7 @@ export default function MostRequest() {
 
     return (
         <div className="h-screen">
-            <div className="font-bold font-oswald text-5xl bg-neutral-950 text-white/80 h-1/6 uppercase flex justify-center items-center">
+            <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-1/4 uppercase flex justify-center items-center">
                 Modelli più richiesti
             </div>
             <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
