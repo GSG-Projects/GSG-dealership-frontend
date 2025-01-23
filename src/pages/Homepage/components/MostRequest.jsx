@@ -89,19 +89,16 @@ export default function MostRequest() {
         }, 200)
     }, [currentIndex, filteredModels, cars]);
 
-    const handleHover = (index) => {
-        setCurrentIndex(index);
-    };
-
-    console.log(cars);
-
-
     const handleButtonClick = (index) => {
         setButtonClickStates((prevStates) => {
             const newStates = [...prevStates];
             newStates[index] = !newStates[index];
             return newStates;
         });
+    };
+
+    const handleHover = (index) => {
+        setCurrentIndex(index);
     };
 
     const handleMouseLeave = (index) => {
@@ -113,7 +110,18 @@ export default function MostRequest() {
     };
 
     if (modelsStatus === 'loading' || brandsStatus === 'loading' || carsStatus === 'loading') {
-        return <Loading />;
+        return (
+            <div>
+                <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-1/4 uppercase flex justify-center items-center">
+                    Modelli più richiesti
+                </div>
+                <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
+                    <div className="scale-150 flex justify-center items-center h-64">
+                        <Loading />
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     if (modelsStatus === 'failed') {
@@ -129,11 +137,12 @@ export default function MostRequest() {
     }
 
     return (
-        <div className="h-screen">
-            <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-1/4 uppercase flex justify-center items-center">
+        <>
+            <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
                 Modelli più richiesti
             </div>
-            <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
+            
+            <div className="h-screen relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
 
                 {/* Container Image */}
                 <div className="absolute left-0 top-0 flex h-full w-full">
@@ -175,27 +184,27 @@ export default function MostRequest() {
                                 <div className="m-auto w-full mt-40 text-white font-oswald uppercase">
                                     <ModelInfo
                                         brandName={currentBrand?.name}
-                                        distanceCss={'pl-[140px]'}
+                                        distanceCss={'pl-[160px]'}
                                     >
                                         Brand
                                     </ModelInfo>
                                     <ModelInfo
                                         brandName={currentBrand?.name}
-                                        distanceCss={'pl-[120px]'}
+                                        distanceCss={'pl-[135px]'}
                                         carInfo={currentCar?.fuel_type}
                                     >
                                         Carburante
                                     </ModelInfo>
                                     <ModelInfo
                                         brandName={currentBrand?.name}
-                                        distanceCss={'pl-[100px]'}
+                                        distanceCss={'pl-[110px]'}
                                         carInfo={currentCar?.engine_capacity}
                                     >
                                         Cilindrata
                                     </ModelInfo>
                                     <ModelInfo
                                         brandName={currentBrand?.name}
-                                        distanceCss={'pl-[80px]'}
+                                        distanceCss={'pl-[85px]'}
                                         carInfo={currentCar?.power_kw}
                                     >
                                         Potenza
@@ -217,11 +226,11 @@ export default function MostRequest() {
                                 }`}
                                 style={{
                                     ...(index === currentIndex
-                                      ? {
-                                          transform: `translate(${offset.x}px, ${offset.y}px)`,
-                                          transition: "transform 0.1s ease-out",
+                                    ? {
+                                        transform: `translate(${offset.x}px, ${offset.y}px)`,
+                                        transition: "transform 0.1s ease-out",
                                         }
-                                      : {}),
+                                    : {}),
                                 }}
                                 src={model.image}
                                 alt={model.name}
@@ -238,6 +247,6 @@ export default function MostRequest() {
                     ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 }
