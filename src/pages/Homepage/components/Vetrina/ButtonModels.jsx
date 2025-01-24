@@ -2,7 +2,7 @@ export default function ButtonModels({children, handleButtonClick, currentIndex,
 
     return(
         <button
-        className={`aspect-square absolute top-10 bg-black z-20 left-40 transition-all ease-in-out duration-300 text-neutral-300  hover:text-black 
+        className={`aspect-square absolute top-10 bg-black z-20 left-48 transition-all ease-in-out duration-300 text-neutral-300  hover:text-black 
             ${index === currentIndex ? 'w-14 opacity-100' : 'w-0 opacity-0'}
             ${buttonClickStates[index] ? 'rotate-180 bg-white hover:bg-neutral-300' : 'bg-black hover:bg-neutral-900'}`}
         style={{ 

@@ -1,8 +1,9 @@
 import React from 'react';
 import Jumbotron from './components/Jumbotron';
 import BrandsCarousel from './components/BrandsCarousel';
-import MostRequest from './components/MostRequest';
+import Vetrina from './components/Vetrina';
 import ScrollParallax from './components/ScrollParallax';
+import Info from './components/Info';
 
 export default function Homepage() {
     return (
@@ -10,7 +11,8 @@ export default function Homepage() {
             <Jumbotron />
             <BrandsCarousel />
             <ScrollParallax />
-            <MostRequest />
+            <Vetrina />
+            <Info />
         </>
     );
 }
