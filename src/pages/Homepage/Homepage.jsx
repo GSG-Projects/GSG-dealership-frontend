@@ -9,9 +9,9 @@ export default function Homepage() {
     return (
         <>
             <Jumbotron />
-            <BrandsCarousel />
             <ScrollParallax />
             <Vetrina />
+            <BrandsCarousel />
             <Info />
         </>
     );
