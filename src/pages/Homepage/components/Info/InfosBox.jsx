@@ -1,13 +1,16 @@
-export default function InfosBox({icon, info, title}) {
-    return(
-        <div className="w-full bg-white flex flex-col gap-5">
-            <div className="text-black">
+export default function InfosBox({ icon, info, title }) {
+    return (
+        <div className="w-full bg-white flex flex-col items-center gap-10 p-10 aspect-square transition-shadow duration-300">
+            {/* Icon */}
+            <div className="text-black text-8xl">
                 {icon}
             </div>
-            <h1 className="font-bold">
+            {/* Title */}
+            <h1 className="font-bold text-xl text-gray-800 text-center uppercase">
                 {title}
             </h1>
-            <p>
+            {/* Info */}
+            <p className="text-gray-600 text-center w-56">
                 {info}
             </p>
         </div>
