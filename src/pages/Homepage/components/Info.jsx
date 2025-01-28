@@ -42,7 +42,7 @@ export default function Info() {
                  <InfosBox
                     icon={<FontAwesomeIcon icon={faEnvelope}/>}
                     title={"E-MAIL"}
-                    info={"info@gsgautomobili.it, assistenza@gsgautomobili.it."} 
+                    info={"info@gsgautomobili.it assistenza@gsgautomobili.it"} 
                 />
             </div>
         </div>
