@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout';
 import Homepage from './pages/Homepage/Homepage';
-import About from './pages/About/About';
+import Brands from './pages/Brands/Brands';
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Homepage />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/marchi" element={<Brands />} />
       </Route>
     </Routes>
   );

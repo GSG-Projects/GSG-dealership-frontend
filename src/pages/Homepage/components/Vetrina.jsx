@@ -7,14 +7,14 @@ import { fetchCars } from "../../../store/API/Cars";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import './MostRequest.css';
+import './Vetrina.css';
 
-import ButtonModels from "./MostRequest/ButtonModels";
-import ModelName from "./MostRequest/ModelName";
+import ButtonModels from "./Vetrina/ButtonModels";
+import ModelName from "./Vetrina/ModelName";
 import Loading from "../../../components/Loading";
-import ModelInfo from "./MostRequest/ModelInfo";
+import ModelInfo from "./Vetrina/ModelInfo";
 
-export default function MostRequest() {
+export default function Vetrina() {
     const dispatch = useDispatch();
     const { items: models, status: modelsStatus, error: modelsError } = useSelector((state) => state.models);
     const { items: brands, status: brandsStatus, error: brandsError } = useSelector((state) => state.brands);
@@ -112,8 +112,8 @@ export default function MostRequest() {
     if (modelsStatus === 'loading' || brandsStatus === 'loading' || carsStatus === 'loading') {
         return (
             <div>
-                <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-1/4 uppercase flex justify-center items-center">
-                    Modelli più richiesti
+                <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
+                    Vetrina
                 </div>
                 <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
                     <div className="scale-150 flex justify-center items-center h-64">
@@ -139,9 +139,9 @@ export default function MostRequest() {
     return (
         <>
             <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
-                Modelli più richiesti
+                Vetrina
             </div>
-            
+
             <div className="h-screen relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
 
                 {/* Container Image */}

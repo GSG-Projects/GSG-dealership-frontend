@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import logo from '../../assets/img/GSG_logo.png';
-import Link from './components/Link';
 import { NavLink } from 'react-router-dom';
 
 const LINKS = [ 
@@ -11,17 +10,38 @@ const LINKS = [
 ];
 
 function Header() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  function handleBarIn(index) {
+    setActiveIndex(index);
+  }
+
+  function handleBarOut() {
+    setActiveIndex(null);
+  }
+
   return (
     <header className="bg-black">
       <div className='flex justify-between items-center py-5 w-8/12 m-auto'>
         <nav className='w-1/3'>
-          <ul className='text-white/60 flex gap-10'>
+          <ul className='flex gap-10'>
             {
               LINKS.map((item, index) => (
-                <li key={index}>
-                  <Link to={item.path}>
+                <li key={index} className="relative">
+                  <NavLink 
+                    onMouseEnter={() => handleBarIn(index)}
+                    onMouseLeave={handleBarOut}
+                    to={item.path} 
+                    className={({ isActive }) => 
+                      `transition-all ease-in-out duration-300 ${isActive ? "font-bold text-white" : "text-white/60 hover:text-white"}`
+                    }
+                  >
                     {item.title}
-                  </Link>
+                  </NavLink>
+
+                  <div 
+                    className={`border-b border-white absolute bottom-0 left-0 transition-all duration-500 ${activeIndex === index ? 'expand-bar-in' : 'expand-bar-out'}`}
+                  ></div>
                 </li>
               ))
             }
@@ -37,7 +57,7 @@ function Header() {
         </NavLink>
 
         <div className='w-1/3 justify-end flex'>
-          <button className=' text-white px-4 py-1 rounded'>
+          <button className='text-white px-4 py-1 rounded'>
             Sign Up
           </button>
         </div>

@@ -1,0 +1,25 @@
+@keyframes expand-in {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .expand-bar-in {
+    animation: expand-in 0.5s ease-in-out forwards;
+  }
+
+  @keyframes expand-out {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }
+  
+  .expand-bar-out {
+    animation: expand-out 0.5s ease-in-out backwards;
+  }
