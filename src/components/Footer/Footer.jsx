@@ -6,7 +6,7 @@ import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/fre
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-neutral-900 to-black text-white border-t border-neutral-700">
+    <footer className="z-10 bg-gradient-to-b from-neutral-900 to-black text-white border-t border-neutral-700">
       <div className="grid grid-cols-3 w-full py-8">
         <img
           src={logo}
@@ -18,7 +18,7 @@ export default function Footer() {
             Marchi
           </NavLink>
           <NavLink>
-            Automobili
+            Auto
           </NavLink>
           <NavLink>
             Contatti
@@ -35,7 +35,7 @@ export default function Footer() {
 
       <div className='py-10 w-11/12 mx-auto flex items-center justify-between'>
         <p className='text-neutral-500'>
-          © 2025 GSG Automobili. All Rights Reserved.
+          © 2025 GSG Auto. All Rights Reserved.
         </p>
         <div className='flex gap-10 text-neutral-500'>
           <FontAwesomeIcon icon={faInstagram} />

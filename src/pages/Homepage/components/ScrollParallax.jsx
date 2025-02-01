@@ -14,7 +14,7 @@ export default function ScrollParallax() {
     return (
         <div className="overflow-hidden bg-black border-t border-b border-white">
             <Parallax
-                strength={-300}
+                strength={-400}
                 bgImage={parallaxPhoto}
                 bgImageStyle={{
                     objectFit: 'cover',
