@@ -4,8 +4,9 @@ import logo from '../../assets/img/GSG_logo.png';
 import { NavLink } from 'react-router-dom';
 
 const LINKS = [ 
+  { title: 'Home', path: '/' },
   { title: 'Marchi', path: '/marchi' },
-  { title: 'Automobili', path: '/automobili' },
+  { title: 'Auto', path: '/auto' },
   { title: 'Contatti', path: '/contatti' },
 ];
 
