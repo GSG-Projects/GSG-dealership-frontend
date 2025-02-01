@@ -48,13 +48,15 @@ function Header() {
           </ul>
         </nav>
 
+        <div className='w-20'>
         <NavLink to='/' className='w-1/3'>
           <img 
-            className='w-20 m-auto'
+            className=''
             src={logo} 
             alt="GSG Logo" 
           />
         </NavLink>
+        </div>
 
         <div className='w-1/3 justify-end flex'>
           <button className='text-white px-4 py-1 rounded'>
