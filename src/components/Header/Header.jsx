@@ -10,14 +10,14 @@ const LINKS = [
 ];
 
 function Header() {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [barState, setBarState] = useState({});
 
   function handleBarIn(index) {
-    setActiveIndex(index);
+    setBarState((prev) => ({ ...prev, [index]: 'in' }));
   }
 
-  function handleBarOut() {
-    setActiveIndex(null);
+  function handleBarOut(index) {
+    setBarState((prev) => ({ ...prev, [index]: 'out' }));
   }
 
   return (
@@ -30,17 +30,17 @@ function Header() {
                 <li key={index} className="relative">
                   <NavLink 
                     onMouseEnter={() => handleBarIn(index)}
-                    onMouseLeave={handleBarOut}
+                    onMouseLeave={() => handleBarOut(index)}
                     to={item.path} 
                     className={({ isActive }) => 
-                      `transition-all ease-in-out duration-300 ${isActive ? "font-bold text-white" : "text-white/60 hover:text-white"}`
+                      `transition-all ease-in-out duration-300 z-10 ${isActive ? "font-bold text-white" : "text-white/60 hover:text-white"}`
                     }
                   >
                     {item.title}
                   </NavLink>
-
                   <div 
-                    className={`border-b border-white absolute bottom-0 left-0 transition-all duration-500 ${activeIndex === index ? 'expand-bar-in' : 'expand-bar-out'}`}
+                    className={`h-1 absolute bottom-0 left-0 w-0 border-b border-white transition-all duration-300 pointer-events-none overflo
+                      ${barState[index] === 'in' ? 'expand-bar-in' : barState[index] === 'out' ? 'expand-bar-out' : ''}`}
                   ></div>
                 </li>
               ))

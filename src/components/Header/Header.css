@@ -12,14 +12,17 @@
   }
 
   @keyframes expand-out {
-    from {
+    0% {
+      left: 0;
       width: 100%;
     }
-    to {
-      width: 0%;
+    100% {
+      left: 100%; 
+      width: 0;   
     }
   }
   
   .expand-bar-out {
-    animation: expand-out 0.5s ease-in-out backwards;
+    transform-origin: left;
+    animation: expand-out 0.5s ease-in-out forwards;
   }
