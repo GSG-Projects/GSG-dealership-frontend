@@ -4,6 +4,13 @@ import TransparentButton from '../TransparentButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
+const LINKS = [ 
+  { title: 'Home', path: '/' },
+  { title: 'Marchi', path: '/marchi' },
+  { title: 'Auto', path: '/auto' },
+  { title: 'Contatti', path: '/contatti' },
+];
+
 export default function Footer() {
   return (
     <footer className="z-10 bg-gradient-to-b from-neutral-900 to-black text-white border-t border-neutral-700">
@@ -14,15 +21,20 @@ export default function Footer() {
           className='mx-auto scale-75'
         />
         <div className='flex gap-16 items-center justify-center'>
-          <NavLink>
-            Marchi
-          </NavLink>
-          <NavLink>
-            Auto
-          </NavLink>
-          <NavLink>
-            Contatti
-          </NavLink>
+          {
+            LINKS.map((item, index) => (
+              <li 
+                key={index} 
+                className='list-none'
+              >
+                <NavLink 
+                  to={item.path} 
+                >
+                  {item.title}
+                </NavLink>
+              </li>
+            ))
+          }
         </div>
         <div className='flex items-center justify-center'>
           <TransparentButton>

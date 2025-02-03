@@ -13,7 +13,7 @@ export const fetchSingleBrand = createAsyncThunk('singleBrand/fetch', async (id)
 const singleBrandSlice = createSlice({
   name: 'singleBrand',
   initialState: {
-    item: null,
+    item: {},
     status: 'idle',
     error: null,
   },
