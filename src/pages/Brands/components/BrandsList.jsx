@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBrands } from "../../../store/API/Brands";
 import { Link } from "react-router-dom";
+import Loading from "../../../components/Loading";
 
 export default function SingleBrand() {
     const dispatch = useDispatch();
@@ -15,11 +16,11 @@ export default function SingleBrand() {
 
     if (status === 'loading') {
         return (
-            <span
-                className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-            >
-                Loading...
-            </span>
+            <div className="flex justify-center items-center h-screen">
+                <div className="scale-150">
+                    <Loading />
+                </div>
+            </div>
         );
     }
     if (status === 'failed') return <p>Error: {error}</p>;

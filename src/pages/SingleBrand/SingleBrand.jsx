@@ -20,7 +20,7 @@ export default function SingleBrand() {
     const { scrollYProgress } = useScroll();
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
     const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
-
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
     useEffect(() => {
         if (id) {
@@ -39,8 +39,8 @@ export default function SingleBrand() {
 
     if (brandStatus === 'loading' || modelsStatus === 'loading' || carsStatus === 'loading') {
         return (
-            <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
-                <div className="scale-150 flex justify-center items-center h-64">
+             <div className="flex justify-center items-center h-screen bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950">
+                <div className="scale-150">
                     <Loading />
                 </div>
             </div>
@@ -64,18 +64,18 @@ export default function SingleBrand() {
     return (
             <div className="w-full bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950 min-h-screen relative">
             <motion.div
-                initial={{ scale: 1, y: 0 }}
-                style={{ scale, y }}
+                initial={{ scale: 1, y: 0, opacity: 100 }}
+                style={{ scale, y, opacity }}
                 className="py-10 h-2/3 mx-auto sticky flex items-start justify-center top-0"
             >
-                <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[800px]"/>
+                <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[700px]"/>
             </motion.div>
             <div className="w-full h-auto grid grid-cols-3 gap-24 border-t relative border-white p-20 bg-gradient-to-b from-neutral-950 to-neutral-900">
                 {
                     models.map((model) => (
                         model.brand_id == id &&
                         <>
-                            <div className="w-full text-white border h-48 relative border-white shadow-lg overflow-hidden transition-all ease-in-out duration-300 hover:h-72">
+                            <div className="w-full text-white border h-48 relative border-white shadow-lg overflow-hidden transition-all ease-in-out duration-300 hover:h-72 hover:scale-105">
                                 <img 
                                     className="w-full h-full object-cover"
                                     src={model.image} 
