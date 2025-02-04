@@ -13,7 +13,7 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="z-10 bg-gradient-to-b from-neutral-900 to-black text-white border-t border-neutral-700">
+    <footer className="z-10 bg-gradient-to-b from-neutral-900 relative to-black text-white border-t border-neutral-700">
       <div className="grid grid-cols-3 w-full py-8">
         <img
           src={logo}

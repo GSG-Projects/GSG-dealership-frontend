@@ -22,7 +22,7 @@ function Header() {
   }
 
   return (
-    <header className="bg-black">
+    <header className="bg-black border-b border-white">
       <div className='flex justify-between items-center py-5 w-8/12 m-auto'>
         <nav className='w-1/3'>
           <ul className='flex gap-10'>

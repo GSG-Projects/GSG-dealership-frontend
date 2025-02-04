@@ -62,27 +62,27 @@ export default function SingleBrand() {
     console.log(models.brand_id);
 
     return (
-        <div className="w-full bg-gradient-to-b min-h-screen relative from-neutral-950 to-neutral-900">
+            <div className="w-full bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950 min-h-screen relative">
             <motion.div
                 initial={{ scale: 1, y: 0 }}
                 style={{ scale, y }}
-                className="py-10 h-auto mx-auto sticky flex items-start justify-center top-0"
+                className="py-10 h-2/3 mx-auto sticky flex items-start justify-center top-0"
             >
                 <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[800px]"/>
             </motion.div>
-            <div className="w-full flex gap-24 border-t sticky overflow-visi border-white p-20 bg-gradient-to-b from-neutral-950 to-neutral-900">
+            <div className="w-full h-auto grid grid-cols-3 gap-24 border-t relative border-white p-20 bg-gradient-to-b from-neutral-950 to-neutral-900">
                 {
                     models.map((model) => (
                         model.brand_id == id &&
                         <>
-                            <div className="w-1/3 text-white border relative border-white shadow-lg overflow-hidden">
+                            <div className="w-full text-white border h-48 relative border-white shadow-lg overflow-hidden transition-all ease-in-out duration-300 hover:h-72">
                                 <img 
-                                    className="w-full h-48 object-cover"
+                                    className="w-full h-full object-cover"
                                     src={model.image} 
                                     alt={model.name} 
                                 />
                                 <div 
-                                    className="text-xl font-bold bg-gradient-to-r from-neutral-800 to-neutral-900 py-8 outline-1 outline-white absolute bottom-0 right-0 z-10 text-center transition-all ease-in-out duration-200 w-3/12 h-1/4 flex justify-center items-center"
+                                    className="text-xl font-bold bg-gradient-to-r from-neutral-800 to-neutral-900 py-8 outline-1 outline-white absolute bottom-0 right-0 z-10 text-center transition-all ease-in-out duration-200 w-auto px-16 h-11 flex justify-center items-center"
                                     style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)' }}
                                 >
                                     {model.name}
