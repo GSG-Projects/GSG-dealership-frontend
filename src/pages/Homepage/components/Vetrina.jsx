@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchModels } from "../../../store/API/CarModels";
 import { fetchBrands } from "../../../store/API/Brands";
+import { fetchModels } from "../../../store/API/CarModels";
 import { fetchCars } from "../../../store/API/Cars";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,8 +17,8 @@ import ModelInfo from "./Vetrina/ModelInfo";
 export default function Vetrina() {
     const dispatch = useDispatch();
     const { items: models, status: modelsStatus, error: modelsError } = useSelector((state) => state.models);
-    const { items: brands, status: brandsStatus, error: brandsError } = useSelector((state) => state.brands);
     const { items: cars, status: carsStatus, error: carsError } = useSelector((state) => state.cars);
+    const { items: brands, status: brandsStatus, error: brandsError } = useSelector((state) => state.brands);
 
     const [currentBrand, setCurrentBrand] = useState(null);
     const [currentCar, setCurrentCar] = useState(null);
@@ -35,8 +35,8 @@ export default function Vetrina() {
         const y = (e.clientY - windowHeight / 2) / windowHeight;
 
         setOffset({
-        x: -x * 15,
-        y: -y * 15,
+            x: -x * 15,
+            y: -y * 15,
         });
     };
 

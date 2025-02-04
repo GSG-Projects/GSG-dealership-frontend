@@ -29,8 +29,8 @@ export default function SingleBrand() {
             <div className="w-7/12 grid grid-cols-3 gap-20 m-auto py-20 h-full">
                 {items.map((brand, index) => (
                     <Link
-                        to={`${brand.id}`} 
-                    <Link 
+                        key={index}
+                        to={`${brand.id}`}
                         className="bg-black/50 border border-white h-auto flex gap-7 flex-col justify-center items-center py-10 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl">
                             <img 
                                 className="h-32 object-contain max-w-48 aspect-auto mx-4"
