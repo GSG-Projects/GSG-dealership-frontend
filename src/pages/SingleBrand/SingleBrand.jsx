@@ -59,6 +59,8 @@ export default function SingleBrand() {
         return <p>Error loading cars: {carsError}</p>;
     }
 
+    console.log(models.brand_id);
+
     return (
         <div className="w-full bg-gradient-to-b min-h-screen relative from-neutral-950 to-neutral-900">
             <motion.div
@@ -68,6 +70,28 @@ export default function SingleBrand() {
             >
                 <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[800px]"/>
             </motion.div>
+            <div className="w-full flex gap-24 border-t sticky overflow-visi border-white p-20 bg-gradient-to-b from-neutral-950 to-neutral-900">
+                {
+                    models.map((model) => (
+                        model.brand_id == id &&
+                        <>
+                            <div className="w-1/3 text-white border relative border-white shadow-lg overflow-hidden">
+                                <img 
+                                    className="w-full h-48 object-cover"
+                                    src={model.image} 
+                                    alt={model.name} 
+                                />
+                                <div 
+                                    className="text-xl font-bold bg-gradient-to-r from-neutral-800 to-neutral-900 py-8 outline-1 outline-white absolute bottom-0 right-0 z-10 text-center transition-all ease-in-out duration-200 w-3/12 h-1/4 flex justify-center items-center"
+                                    style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)' }}
+                                >
+                                    {model.name}
+                                </div>
+                            </div>
+                        </>
+                    ))          
+                }
+            </div>
         </div>
     );
 }
