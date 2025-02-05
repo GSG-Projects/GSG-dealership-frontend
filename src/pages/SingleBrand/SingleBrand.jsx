@@ -64,8 +64,6 @@ export default function SingleBrand() {
         return <p>Error loading cars: {carsError}</p>;
     }
 
-    console.log(models.brand_id);
-
     return (
         <div className="w-full bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950 min-h-screen relative">
             <img 
@@ -80,26 +78,25 @@ export default function SingleBrand() {
                 <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[700px]"/>
             </motion.div>
             <div className="w-full h-auto grid grid-cols-1 gap-24 border-t relative border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
-            {models
-                .filter((model) => model.brand_id == id)
-                .map((model) => {
-                    const car = cars.find(car => car.car_model.id === model.id);
-                    
-                    if (car) {
-                        return (
+                {(models?.length > 0 && cars?.length > 0) ? (
+                    models
+                    .filter((model) => model.brand_id == id)
+                    .map((model) => {
+                        const car = cars.find((car) => car.car_model_id === model.id);
+                        return car ? (
                             <ModelItem 
                                 key={model.id}
                                 id={model.id}
                                 image={model.image}
                                 name={model.name}
                                 carburante={car.fuel_type}
-                                prezzo={car.price}
+                                prezzo={car.base_price}
                             />
-                        );
-                    }
-                    return null;
-                })
-            }
+                        ) : null;
+                    })
+                ) : (
+                    <p className="text-center text-white">Nessun modello disponibile</p>
+                )}
             </div>
         </div>
     );
