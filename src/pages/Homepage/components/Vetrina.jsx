@@ -82,8 +82,8 @@ export default function Vetrina() {
         setTimeout(() => {
             if (filteredModels.length > 0 && cars.length > 0) {
                 const currentModel = filteredModels[currentIndex];
-                console.log(currentModel);
-                const car = cars.find((b) => b.id === currentModel.id);
+                console.log(cars);
+                const car = cars.find((b) => b.car_model_id === currentModel.id);
                 setCurrentCar(car);
             }
         }, 200)

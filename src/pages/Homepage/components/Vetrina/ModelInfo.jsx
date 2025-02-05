@@ -10,7 +10,7 @@ export default function ModelInfo({children, brandName, distanceCss, carInfo}) {
                     ? (brandName || "Loading...")
                     : children === 'Prezzo base'
                     ? (carInfo ? `€ ${carInfo}` : "Loading...")
-                    : (carInfo)
+                    : (carInfo || "Loading...")
                 }
             </h2>
         </div>

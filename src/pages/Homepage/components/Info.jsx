@@ -26,17 +26,17 @@ export default function Info() {
                     icon={<FontAwesomeIcon icon={faClock}/>}
                     title={"ORARI"}
                     info={                        
-                        <>
-                            <p>
+                        <ul>
+                            <li>
                                 Lunedì-Venerdì: 9:00 - 18:00
-                            </p>
-                            <p>
+                            </li>
+                            <li>
                                 Sabato: 9:00 - 13:00
-                            </p>
-                            <p>
+                            </li>
+                            <li>
                                 Domenica: Chiuso
-                            </p>
-                        </>
+                            </li>
+                        </ul>
                     } 
                 />
                  <InfosBox
