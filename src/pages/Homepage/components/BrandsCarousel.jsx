@@ -4,6 +4,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { animate } from "motion";
 import { fetchBrands } from '../../../store/API/Brands';
 import { useDispatch, useSelector } from "react-redux";
+import Loading from '../../../components/Loading';
 
 export default function BrandsCarousel() {
     let [ref, { width }] = useMeasure();
@@ -35,19 +36,12 @@ export default function BrandsCarousel() {
 
     if (status === 'loading') {
         return (
-            <div className="relative bg-gradient-to-b from-neutral-950 to-neutral-800 overflow-hidden h-62 flex justify-center items-center w-full">
+            <div className="relative bg-neutral-900 overflow-hidden h-44 flex justify-center items-center">
             <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
-            <div
-                className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-neutral-100 motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                role="status"
-            >
-                <span
-                    className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-                >
-                    Loading...
-                </span>
+                <div className="scale-110">
+                    <Loading />
+                </div>
             </div>
-        </div>
         );
     }
     if (status === 'failed') return <p>Error: {error}</p>;

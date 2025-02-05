@@ -98,16 +98,17 @@ export default function Vetrina() {
     };
 
     const handleHover = (index) => {
-        setCurrentIndex(index);
+        if (index !== currentIndex) { 
+            setButtonClickStates((prevStates) => {
+                const newStates = [...prevStates];
+                newStates[currentIndex] = false; 
+                return newStates;
+            });
+    
+            setCurrentIndex(index); 
+        }
     };
-
-    const handleMouseLeave = (index) => {
-        setButtonClickStates((prevStates) => {
-            const newStates = [...prevStates];
-            newStates[index] = false;
-            return newStates;
-        });
-    };
+    
 
     if (modelsStatus === 'loading' || brandsStatus === 'loading' || carsStatus === 'loading') {
         return (
@@ -150,7 +151,6 @@ export default function Vetrina() {
                         <div
                             key={index}
                             onMouseEnter={() => handleHover(index)}
-                            onMouseLeave={() => handleMouseLeave(index)}
                             className={`transition-all relative h-full flex ease-in-out duration-500 overflow-hidden shadow-inner 
                                 ${index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"}`
                             }
