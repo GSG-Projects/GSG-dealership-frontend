@@ -12,7 +12,7 @@ export default function CarInfo({ children, info, isFirst, isPrice }) {
             <span className="uppercase font-bold">
                 {children}
             </span> 
-            <div>
+            <div className="flex gap-1">
                 {
                     isPrice && <span>€ </span> 
                 }
