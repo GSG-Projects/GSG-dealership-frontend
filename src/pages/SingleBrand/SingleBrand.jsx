@@ -91,6 +91,8 @@ export default function SingleBrand() {
                                 name={model.name}
                                 carburante={car.fuel_type}
                                 prezzo={car.base_price}
+                                cilindrata={car.engine_capacity}
+                                potenza={car.power_kw}
                             />
                         ) : null;
                     })
