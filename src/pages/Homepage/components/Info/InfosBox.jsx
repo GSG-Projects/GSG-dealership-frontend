@@ -10,9 +10,9 @@ export default function InfosBox({ icon, info, title }) {
                 {title}
             </h1>
             {/* Info */}
-            <p className="text-gray-600 text-center w-56">
+            <div className="text-gray-600 text-center w-56">
                 {info}
-            </p>
+            </div>
         </div>
     );
 }
