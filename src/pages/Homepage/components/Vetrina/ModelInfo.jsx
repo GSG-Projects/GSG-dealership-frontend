@@ -7,10 +7,10 @@ export default function ModelInfo({children, brandName, distanceCss, carInfo}) {
             <h2 className={`text-3xl ${distanceCss}`}>
             {
                     children === 'Brand' 
-                    ? (brandName || "Loading...")
+                    ? (brandName || "N/A")
                     : children === 'Prezzo base'
-                    ? (carInfo ? `€ ${carInfo}` : "Loading...")
-                    : (carInfo || "Loading...")
+                    ? (carInfo ? `€ ${carInfo}` : "N/A")
+                    : (carInfo || "N/A")
                 }
             </h2>
         </div>

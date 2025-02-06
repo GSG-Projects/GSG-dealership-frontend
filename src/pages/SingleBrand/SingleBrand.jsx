@@ -77,7 +77,7 @@ export default function SingleBrand() {
             >
                 <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[700px]"/>
             </motion.div>
-            <div className="w-full h-auto grid grid-cols-1 gap-24 border-t relative border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
+            <div className="w-full h-auto grid grid-cols-2 gap-24 border-t relative border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
                 {(models?.length > 0 && cars?.length > 0) ? (
                     models
                     .filter((model) => model.brand_id == id)

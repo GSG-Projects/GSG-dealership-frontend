@@ -1,8 +1,10 @@
 @keyframes expand-in {
     from {
+      right:0;
       width: 0%;
     }
     to {
+      right:100%;
       width: 100%;
     }
   }

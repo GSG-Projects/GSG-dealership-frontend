@@ -21,7 +21,7 @@ export default function ModelItem({ image, name, id, carburante, prezzo, cilindr
     }
 
     return (
-        <Link className="border mx-auto h-[30rem] border-white w-7/12 transition-all ease-in-out duration-500 overflow-hidden">
+        <Link className="border mx-auto h-[30rem] border-white w-full transition-all ease-in-out duration-500 overflow-hidden">
             <div
                 className="text-white h-full relative shadow-lg"
                 onMouseEnter={() => handleEnter(id)}
@@ -33,8 +33,8 @@ export default function ModelItem({ image, name, id, carburante, prezzo, cilindr
                     alt={name} 
                 />
                 <div
-                    className="text-xl font-bold bg-gradient-to-r from-neutral-200 to-white text-neutral-950 py-8 absolute bottom-0 right-0 z-10 text-center transition-all ease-in-out duration-200 w-auto px-16 h-11 flex justify-center items-center font-kanit"
-                    style={{ clipPath: 'polygon(30px 0, 100% 0, 100% 100%, 0 100%)' }}
+                    className="text-xl font-bold bg-gradient-to-r from-neutral-50 to-white text-neutral-950 py-8 absolute bottom-0 right-0 z-10 text-center transition-all ease-in-out duration-200 w-auto px-16 h-11 flex justify-center items-center font-kanit"
+                    style={{ clipPath: 'polygon(25px 0, 100% 0, 100% 100%, 0 100%)' }}
                     ref={ref}
                 >
                     {name}
