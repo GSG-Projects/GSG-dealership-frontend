@@ -3,6 +3,7 @@ import img1 from '../../../assets/jumbotron cars/img1.jpg';
 import img2 from '../../../assets/jumbotron cars/img2.jpg';
 import img3 from '../../../assets/jumbotron cars/img3.jpg';
 import img4 from '../../../assets/jumbotron cars/img4.jpg';
+import { Link } from 'react-router-dom';
 
 const IMAGES = [
     {
@@ -65,9 +66,11 @@ export default function Jumbotron () {
                 <p className='text-md mt-12'>
                     Scopri le nostre auto in vendita e trova quella giusta per te.
                 </p>
-                <button className='border border-white/30 bg-transparent mt-5 py-2 px-6 hover:bg-white/10 transition-all ease-in-out duration-300'>
-                    Scopri di più
-                </button>
+                <Link to="/auto">
+                    <button className='border border-white/30 bg-transparent mt-5 py-2 px-6 hover:bg-white/10 transition-all ease-in-out duration-300'>
+                        Scopri di più
+                    </button>
+                </Link>
             </div>
         </div>
     );

@@ -41,7 +41,7 @@ function Header() {
                   </NavLink>
                   <div 
                     className={`h-1 absolute bottom-0 left-0 w-0 border-b border-white transition-all duration-300 pointer-events-none overflo
-                      ${barState[index] === 'in' ? 'expand-bar-in' : barState[index] === 'out' ? 'expand-bar-out' : ''}`}
+                      ${barState[index] === 'in' ? 'expand-header-in' : barState[index] === 'out' ? 'expand-header-out' : ''}`}
                   ></div>
                 </li>
               ))
