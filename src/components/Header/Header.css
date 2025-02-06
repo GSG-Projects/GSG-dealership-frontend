@@ -1,19 +1,17 @@
-@keyframes expand-in {
+@keyframes expand-header-in {
     from {
-      right:0;
       width: 0%;
     }
     to {
-      right:100%;
       width: 100%;
     }
   }
   
-  .expand-bar-in {
-    animation: expand-in 0.5s ease-in-out forwards;
+  .expand-header-in {
+    animation: expand-header-in 0.5s ease-in-out forwards;
   }
 
-  @keyframes expand-out {
+  @keyframes expand-header-out {
     0% {
       left: 0;
       width: 100%;
@@ -24,7 +22,7 @@
     }
   }
   
-  .expand-bar-out {
+  .expand-header-out {
     transform-origin: left;
-    animation: expand-out 0.5s ease-in-out forwards;
+    animation: expand-header-out 0.5s ease-in-out forwards;
   }

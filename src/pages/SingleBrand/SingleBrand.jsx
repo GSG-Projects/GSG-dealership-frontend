@@ -10,6 +10,7 @@ import backgorund from '../../assets/img/brands-bg.png'
 
 import Loading from "../../components/Loading";
 import ModelItem from "../../components/ModelItem";
+import FilterComp from "../../components/FilterComp";
 
 export default function SingleBrand() {
     const { id } = useParams();
@@ -66,6 +67,7 @@ export default function SingleBrand() {
 
     return (
         <div className="w-full bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950 min-h-screen relative">
+            {/* Immagine Brand */}
             <img 
                 src={backgorund} alt="" 
                 className="absolute top-0 object-cover w-full"
@@ -77,28 +79,34 @@ export default function SingleBrand() {
             >
                 <img src={brand.image} alt={brand.name || "Brand"} className="h-96 object-contain max-w-[700px]"/>
             </motion.div>
-            <div className="w-full h-auto grid grid-cols-2 gap-24 border-t relative border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
-                {(models?.length > 0 && cars?.length > 0) ? (
-                    models
-                    .filter((model) => model.brand_id == id)
-                    .map((model) => {
-                        const car = cars.find((car) => car.car_model_id === model.id);
-                        return car ? (
-                            <ModelItem 
-                                key={model.id}
-                                id={model.id}
-                                image={model.image}
-                                name={model.name}
-                                carburante={car.fuel_type}
-                                prezzo={car.base_price}
-                                cilindrata={car.engine_capacity}
-                                potenza={car.power_kw}
-                            />
-                        ) : null;
-                    })
-                ) : (
-                    <p className="text-center text-white">Nessun modello disponibile</p>
-                )}
+            
+            {/* Lista Modelli */}
+            <div className="relative h-auto border-t">
+                <FilterComp />
+                
+                <div className="w-full h-auto grid grid-cols-2 gap-24 border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
+                    {(models?.length > 0 && cars?.length > 0) ? (
+                        models
+                        .filter((model) => model.brand_id == id)
+                        .map((model) => {
+                            const car = cars.find((car) => car.car_model_id === model.id);
+                            return car ? (
+                                <ModelItem 
+                                    key={model.id}
+                                    id={model.id}
+                                    image={model.image}
+                                    name={model.name}
+                                    carburante={car.fuel_type}
+                                    prezzo={car.base_price}
+                                    cilindrata={car.engine_capacity}
+                                    potenza={car.power_kw}
+                                />
+                            ) : null;
+                        })
+                    ) : (
+                        <p className="text-center text-white">Nessun modello disponibile</p>
+                    )}
+                </div>
             </div>
         </div>
     );
