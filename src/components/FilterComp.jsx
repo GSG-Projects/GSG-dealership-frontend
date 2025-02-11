@@ -1,15 +1,25 @@
 import Fuel from "./Filters/Fuel";
+import './FilterComp.css';
+import SingleFilter from './Filters/SingleFilter';
 
 export default function FilterComp() {
     return(
         <>
             <div 
-                className="bg-neutral-300 border border-white sticky z-20 shadow-md left-0 top-0 h-auto w-full grid grid-cols-12 px-[4%] font-kanit py-3 overflow-visible"
-                style={{ clipPath: 'polygon(0 0, 100% 0, 97% 100%, 3% 100%)', }}
+                className="filter-container py-5 px-[4%] grid grid-cols-12 sticky top-0 left-0 z-20"
             >
-                <Fuel />
-                <div>
-                </div>
+                <SingleFilter
+                    fuel={true}
+                >
+                    Alimentazione
+                </SingleFilter>  
+                <SingleFilter>Cilindrata</SingleFilter>  
+                <SingleFilter>Potenza</SingleFilter>  
+                <SingleFilter
+                    price={true}
+                >
+                    Prezzo
+                </SingleFilter>  
             </div>
         </>
     );
