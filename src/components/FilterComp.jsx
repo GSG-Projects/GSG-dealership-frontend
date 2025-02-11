@@ -1,15 +1,21 @@
 import Fuel from "./Filters/Fuel";
 import './FilterComp.css';
+import SingleFilter from './Filters/SingleFilter';
 
 export default function FilterComp() {
     return(
         <>
             <div 
-                className="filter-container py-3 px-[4%] grid grid-cols-12 sticky top-0 left-0 z-20"
+                className="filter-container py-5 px-[4%] grid grid-cols-12 sticky top-0 left-0 z-20"
             >
-                <Fuel />
-                <div>
-                </div>
+                <SingleFilter
+                    fuel={true}
+                >
+                    Alimentazione
+                </SingleFilter>  
+               <SingleFilter>Cilindrata</SingleFilter>  
+               <SingleFilter>Potenza</SingleFilter>  
+               <SingleFilter>Prezzo</SingleFilter>  
             </div>
         </>
     );
