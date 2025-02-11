@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ListDropDown from "./ListDropDown";
 
 export default function Fuel({dropDown}) {

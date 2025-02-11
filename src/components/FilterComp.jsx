@@ -13,9 +13,13 @@ export default function FilterComp() {
                 >
                     Alimentazione
                 </SingleFilter>  
-               <SingleFilter>Cilindrata</SingleFilter>  
-               <SingleFilter>Potenza</SingleFilter>  
-               <SingleFilter>Prezzo</SingleFilter>  
+                <SingleFilter>Cilindrata</SingleFilter>  
+                <SingleFilter>Potenza</SingleFilter>  
+                <SingleFilter
+                    price={true}
+                >
+                    Prezzo
+                </SingleFilter>  
             </div>
         </>
     );

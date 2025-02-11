@@ -2,8 +2,9 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import Fuel from "./Fuel";
+import Price from "./Price";
 
-export default function SingleFilter({children, fuel}) {
+export default function SingleFilter({children, fuel, price}) {
     const [dropDown, setDropDown] = useState(false);
 
     function handleDropDown() {
@@ -25,6 +26,11 @@ export default function SingleFilter({children, fuel}) {
                 </div>
                 { fuel &&
                     <Fuel
+                        dropDown={dropDown}
+                    />
+                }
+                { price &&
+                    <Price
                         dropDown={dropDown}
                     />
                 }
