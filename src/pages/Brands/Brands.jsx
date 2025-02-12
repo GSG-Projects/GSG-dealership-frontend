@@ -13,7 +13,7 @@ export default function Brands() {
                 <img 
                     src={background} 
                     alt="" 
-                    className="fixed top-0 left-0 w-full"
+                    className="absolute top-0 left-0 w-full"
                 />
             </div>
         </>

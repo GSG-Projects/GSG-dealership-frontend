@@ -10,7 +10,7 @@ const LINKS = [
   { title: 'Contatti', path: '/contatti' },
 ];
 
-function Header() {
+export default function Header() {
   const [barState, setBarState] = useState({});
 
   function handleBarIn(index) {
@@ -22,7 +22,7 @@ function Header() {
   }
 
   return (
-    <header className="bg-black border-b border-white">
+    <header className="bg-black border-b border-white z-50">
       <div className='flex justify-between items-center py-5 w-8/12 m-auto'>
         <nav className='w-1/3'>
           <ul className='flex gap-10'>
@@ -68,5 +68,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;
