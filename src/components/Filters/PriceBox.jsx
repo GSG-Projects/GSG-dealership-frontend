@@ -1,11 +1,11 @@
-export default function PriceBox() {
+export default function PriceBox({dropDown}) {
     return(
-        <div className="px-3 py-2 bg-gradient-to-b from-neutral-950 to-neutral-800 text-white gap-2 cursor-pointer transition-all ease-in-out duration-500">
-            <div>
+        <div className={`px-3 py-2 bg-gradient-to-b border border-white from-neutral-950 to-neutral-800 text-white gap-5 text-center cursor-pointer transition-all ease-in-out duration-500 flex font-kanit ${dropDown ? 'block' : 'hidden'}`}>
+            <div className="flex flex-col gap-2">
                 <label>
                     MIN:
                 </label>
-                <select name="min" id="min-select">
+                <select className="w-[7rem] py-1 pl-1 text-black" name="min" aria-placeholder="N/A" id="min-select">
                     <option value="">Qualsiasi</option>
                     <option value="40000">40.000 €</option>
                     <option value="50000">50.000 €</option>
@@ -18,11 +18,11 @@ export default function PriceBox() {
                 </select>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
                 <label>
                     MAX:
                 </label>
-                <select name="max" id="max-select">
+                <select className="w-[7rem] py-1 pl-1 text-black" name="max" aria-placeholder="N/A" id="max-select">
                     <option value="">Qualsiasi</option>
                     <option value="50000">50.000 €</option>
                     <option value="60000">60.000 €</option>
