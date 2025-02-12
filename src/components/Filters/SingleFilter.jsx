@@ -14,7 +14,7 @@ export default function SingleFilter({children, fuel, price}) {
     return(
         <>
             <div className="w-full relative">
-                <div
+                <button
                     onClick={handleDropDown}
                     className="uppercase font-bold flex items-center gap-3 w-2/3 cursor-pointer"
                 >
@@ -23,7 +23,7 @@ export default function SingleFilter({children, fuel, price}) {
                         className={`size-3 transition-transform ease-in-out duration-300 ${dropDown ? 'rotate-90' : 'rotate-0'}`}
                         icon={faChevronRight}
                     />
-                </div>
+                </button>
                 { fuel &&
                     <Fuel
                         dropDown={dropDown}
