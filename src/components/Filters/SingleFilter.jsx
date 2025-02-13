@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import Fuel from "./Fuel";
 import Price from "./Price";
+import Cilindrata from "./Cilindrata";
+import Power from "./Power";
 
-export default function SingleFilter({children, fuel, price}) {
+export default function SingleFilter({children, fuel, price, cilindrata, power}) {
     const [dropDown, setDropDown] = useState(false);
 
     function handleDropDown() {
@@ -31,6 +33,17 @@ export default function SingleFilter({children, fuel, price}) {
                 }
                 { price &&
                     <Price
+                        dropDown={dropDown}
+                    />
+                }
+                { cilindrata &&
+                    <Cilindrata
+                        dropDown={dropDown}
+                    />
+                }
+
+                { power &&
+                    <Power
                         dropDown={dropDown}
                     />
                 }

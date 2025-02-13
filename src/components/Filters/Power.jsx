@@ -10,9 +10,9 @@ export default function Cilindrata({ dropDown }) {
 
     return (
         <ul 
-            className={`w-10/12 border-t-0 absolute left-0 top-11 bg-neutral-800 border text-center border-white transition-all ease-in-out duration-300 z-50 ${dropDown ? 'block' : 'hidden'}`}
+            className={`absolute left-0 top-7 bg-neutral-800 border text-center border-white transition-all ease-in-out duration-300 z-50 ${dropDown ? 'block' : 'hidden'}`}
         >
-            {["3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 8000+"].map((range, index) => (
+            {["250 - 349 kW", "350 - 499 kW", "500 - 699 kW", "700 - 999 kW", "1000+ kW"].map((range, index) => (
                 <ListDropDown
                     key={index}
                     cilindrata={true}

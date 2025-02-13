@@ -13,8 +13,16 @@ export default function FilterComp() {
                 >
                     Alimentazione
                 </SingleFilter>  
-                <SingleFilter>Cilindrata</SingleFilter>  
-                <SingleFilter>Potenza</SingleFilter>  
+                <SingleFilter
+                    cilindrata={true}
+                >
+                    Cilindrata
+                </SingleFilter>  
+                <SingleFilter
+                    power={true}
+                >
+                    Potenza
+                </SingleFilter>  
                 <SingleFilter
                     price={true}
                 >
