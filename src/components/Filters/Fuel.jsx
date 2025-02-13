@@ -19,7 +19,6 @@ export default function Fuel({ dropDown }) {
             {["Benzina", "Diesel", "Elettrico", "Ibrido"].map((fuelType, index) => (
                 <ListDropDown
                     key={index}
-                    fuel={true}
                     isSelected={selectedFuel.includes(fuelType)}
                     onMultipleSelect={() => toggleFuelSelection(fuelType)}
                 >
