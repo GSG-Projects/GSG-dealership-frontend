@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CarInfo from "./CarInfo";
 import { useMeasure } from "@uidotdev/usehooks";
 
-export default function ModelItem({ image, name, id, carburante, prezzo, cilindrata, potenza }) {
+export default function ModelItem({ image, name, id, alimentazione, prezzo, cilindrata, potenza }) {
     const [barState, setBarState] = useState({});
     const [hovered, setHovered] = useState(false);
 
@@ -50,9 +50,9 @@ export default function ModelItem({ image, name, id, carburante, prezzo, cilindr
                     >
                         <CarInfo
                             isFirst={true} 
-                            info={carburante}
+                            info={alimentazione}
                         >
-                            Carburante
+                            Alimentazione
                         </CarInfo>
                         <CarInfo 
                             info={cilindrata}

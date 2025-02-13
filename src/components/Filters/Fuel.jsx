@@ -14,7 +14,7 @@ export default function Fuel({ dropDown }) {
 
     return (
         <ul 
-            className={`w-full border-t-0 absolute left-0 top-[3.4rem] bg-neutral-800 border border-white transition-all ease-in-out duration-300 z-50 ${dropDown ? 'block' : 'hidden'}`}
+            className={`w-full border-t-0 absolute left-0 top-[3.9rem] bg-neutral-800 border border-white transition-all ease-in-out duration-300 z-50 ${dropDown ? 'block' : 'hidden'}`}
         >
             {["Benzina", "Diesel", "Elettrico", "Ibrido"].map((fuelType, index) => (
                 <ListDropDown
