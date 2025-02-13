@@ -21,7 +21,12 @@ export default function FilterComp() {
                     power={true}
                 >
                     Potenza
-                </SingleFilter>  
+                </SingleFilter> 
+                <SingleFilter
+                    cambio={true}
+                >
+                    Cambio
+                </SingleFilter>   
                 <SingleFilter
                     price={true}
                 >
