@@ -8,7 +8,7 @@ export default function RangeBox({ dropDown, filterType }) {
         ],
         cilindrata: [
             "Qualsiasi", "1000", "2000", "3000", "4000",
-            "5000", "6000", "7000", "8000 +"
+            "5000", "6000", "7000", "8000+"
         ],
         power: [
             "Qualsiasi", 

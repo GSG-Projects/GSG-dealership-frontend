@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { setFuel } from '../../store/features/filtersSlice';
 import ListDropDown from "./ListDropDown";
 import './Filters.css';
 
 export default function Fuel({ dropDown }) {
-    const [selectedFuel, setSelectedFuel] = useState([]);
+    const dispatch = useDispatch();
+    const selectedFuel = useSelector(state => state.filters.fuel);
     const [isVisible, setIsVisible] = useState(dropDown);
     const timeoutRef = useRef(null);
 
@@ -22,11 +25,11 @@ export default function Fuel({ dropDown }) {
     }, [dropDown, exitAnimationDuration]);
 
     function toggleFuelSelection(value) {
-        setSelectedFuel((prevSelected) =>
-            prevSelected.includes(value)
-                ? prevSelected.filter((item) => item !== value)
-                : [...prevSelected, value] 
-        );
+        dispatch(setFuel(
+            selectedFuel.includes(value)
+                ? selectedFuel.filter((item) => item !== value)
+                : [...selectedFuel, value]
+        ));
     }
 
     return (

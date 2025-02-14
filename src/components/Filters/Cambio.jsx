@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { setFuel, setTransmission } from "../../store/features/filtersSlice";
 import ListDropDown from "./ListDropDown";
 import './Filters.css';
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Transmission({ dropDown }) {
-    const [selectedTransmission, setSelectedTransmission] = useState([]);
+    const dispatch = useDispatch();
+    const selectedTransmission = useSelector(state => state.filters.transmission);
     const [isVisible, setIsVisible] = useState(dropDown);
     const timeoutRef = useRef(null);
 
@@ -22,11 +25,11 @@ export default function Transmission({ dropDown }) {
     }, [dropDown, exitAnimationDuration]);
 
     function toggleTransmissionSelection(value) {
-        setSelectedTransmission((prevSelected) =>
-            prevSelected.includes(value)
-                ? prevSelected.filter((item) => item !== value)
-                : [...prevSelected, value] 
-        );
+        dispatch(setTransmission(
+            selectedTransmission.includes(value)
+                ? selectedTransmission.filter((item) => item !== value)
+                : [...selectedTransmission, value]
+        ));
     }
 
     return (
