@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { setFuel, setCilindrata, setPower, setTransmission, setPrice } from '../../store/features/filtersSlice';
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuel from "./Fuel";
@@ -12,8 +10,6 @@ import Cambio from "./Cambio";
 export default function SingleFilter({children, fuel, price, cilindrata, power, transmission}) {
     const [dropDown, setDropDown] = useState(false);
     const dropdownRef = useRef(null); 
-    const dispatch = useDispatch();
-    const filters = useSelector(state => state.filters);
 
     function handleDropDown() {
         setDropDown(prev => !prev);
@@ -32,14 +28,6 @@ export default function SingleFilter({children, fuel, price, cilindrata, power, 
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-
-    useEffect(() => {
-        if (fuel) dispatch(setFuel(filters.fuel));
-        if (cilindrata) dispatch(setCilindrata(filters.cilindrata));
-        if (power) dispatch(setPower(filters.power));
-        if (transmission) dispatch(setTransmission(filters.transmission));
-        if (price) dispatch(setPrice(filters.price));
-    }, [filters, dispatch, fuel, cilindrata, power, transmission, price]);
 
     return(
         <div className="w-full flex justify-center relative" ref={dropdownRef}>

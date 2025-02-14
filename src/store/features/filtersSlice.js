@@ -2,10 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   fuel: [],
-  cilindrata: [],
-  power: [],
+  range: 'Qualsiasi',
   transmission: [],
-  price: [],
 };
 
 const filtersSlice = createSlice({
@@ -15,22 +13,16 @@ const filtersSlice = createSlice({
     setFuel: (state, action) => {
       state.fuel = action.payload;
     },
-    setCilindrata: (state, action) => {
-      state.cilindrata = action.payload;
-    },
-    setPower: (state, action) => {
-      state.power = action.payload;
+    setRange: (state, action) => {
+      state.range = action.payload;
     },
     setTransmission: (state, action) => {
       state.transmission = action.payload;
     },
-    setPrice: (state, action) => {
-      state.price = action.payload;
-    },
-    resetFilters: () => initialState,
+    resetFilters: () => ({ ...initialState }),
   },
 });
 
-export const { setFuel, setCilindrata, setPower, setTransmission, setPrice, resetFilters } = filtersSlice.actions;
+export const { setFuel, setRange, setTransmission, resetFilters } = filtersSlice.actions;
 
 export default filtersSlice.reducer;
