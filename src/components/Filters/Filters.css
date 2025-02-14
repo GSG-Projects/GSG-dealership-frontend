@@ -1,0 +1,32 @@
+.drop-menu {
+    perspective: 1000px;
+    animation: border 300ms ease-in-out forwards;
+}
+
+@keyframes border {
+    0% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: white;
+    }
+}
+
+.drop-menu li.animated {
+    animation: menu 300ms ease-in-out forwards;
+}
+
+.drop-menu li.animated:nth-child(n) {
+    animation-delay: calc(100ms * (var(--i) - 1));
+}
+
+@keyframes menu {
+    0% {
+        opacity: 0;
+        transform: rotateX(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
