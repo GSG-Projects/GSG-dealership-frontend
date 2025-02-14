@@ -193,7 +193,7 @@ export default function Vetrina() {
                                         distanceCss={'pl-[135px]'}
                                         carInfo={currentCar?.fuel_type}
                                     >
-                                        Carburante
+                                        Alimentazione
                                     </ModelInfo>
                                     <ModelInfo
                                         brandName={currentBrand?.name}

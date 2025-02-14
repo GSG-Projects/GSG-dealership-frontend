@@ -7,7 +7,7 @@ import Cilindrata from "./Cilindrata";
 import Power from "./Power";
 import Cambio from "./Cambio";
 
-export default function SingleFilter({children, fuel, price, cilindrata, power, cambio}) {
+export default function SingleFilter({children, fuel, price, cilindrata, power, transmission}) {
     const [dropDown, setDropDown] = useState(false);
     const dropdownRef = useRef(null); 
 
@@ -44,7 +44,7 @@ export default function SingleFilter({children, fuel, price, cilindrata, power, 
             {fuel && <Fuel dropDown={dropDown} />}
             {cilindrata && <Cilindrata dropDown={dropDown} />}
             {power && <Power dropDown={dropDown} />}
-            {cambio && <Cambio dropDown={dropDown} />}
+            {transmission && <Cambio dropDown={dropDown} />}
             {price && <Price dropDown={dropDown} />}
         </div>
     );
