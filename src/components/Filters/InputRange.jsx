@@ -1,17 +1,20 @@
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-export default function InputRange({ children, min, max, options }) {
-    const dispatch = useDispatch();
+export default function InputRange({ children, min, options }) {
     const validOptions = options || [];
 
     const [selectedValue, setSelectedValue] = useState(validOptions[0] || "Qualsiasi");
 
+    const resetValue = useSelector((state) => state.filters.reset);
+
     useEffect(() => {
-        if (validOptions.length > 0) {
-            setSelectedValue(validOptions[0]); 
-        }
-    }, [dispatch, validOptions]);
+        setSelectedValue(resetValue);
+    }, [resetValue]);
+
+    const handleChange = (e) => {
+        setSelectedValue(e.target.value);
+    };
 
     return (
         <div className="flex flex-col gap-2">
@@ -22,7 +25,7 @@ export default function InputRange({ children, min, max, options }) {
                 className="px-2 pl-0 w-auto py-1 text-black rounded text-center" 
                 name={min ? "min" : "max"} 
                 aria-placeholder="N/A"
-                onChange={(e) => setSelectedValue(e.target.value)}
+                onChange={handleChange}
                 value={selectedValue}
             >
                 {validOptions.length > 0 ? (

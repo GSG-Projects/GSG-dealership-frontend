@@ -6,7 +6,7 @@ export default function Price({ dropDown }) {
             <div className={`absolute -left-2/2 top-[3.9rem] transition-all ease-in-out duration-300 z-50`}>
                 <RangeBox 
                     dropDown={dropDown} 
-                    filterType="price"
+                    filterType={1}
                 />
             </div>
         </>
