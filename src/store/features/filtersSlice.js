@@ -49,9 +49,9 @@ const filtersSlice = createSlice({
       state.reset = action.payload;
     },
     resetFilters: (state) => {
-      state.reset = 'Qualsiasi';
       state.fuel = [];
       state.transmission = [];
+      state.reset = 'Qualsiasi';
     },
   },
 });
