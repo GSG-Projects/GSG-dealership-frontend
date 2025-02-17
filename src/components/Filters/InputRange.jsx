@@ -5,12 +5,13 @@ export default function InputRange({ children, min, options }) {
     const validOptions = options || [];
 
     const [selectedValue, setSelectedValue] = useState(validOptions[0] || "Qualsiasi");
-
     const resetValue = useSelector((state) => state.filters.reset);
 
     useEffect(() => {
         setSelectedValue(resetValue);
     }, [resetValue]);
+
+    console.log(selectedValue);
 
     const handleChange = (e) => {
         setSelectedValue(e.target.value);

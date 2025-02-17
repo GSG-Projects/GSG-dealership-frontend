@@ -23,7 +23,7 @@ const initialState = {
     "700 kW"
   ],
   transmission: [],
-  reset: '',
+  reset: false,
 };
 
 const filtersSlice = createSlice({
@@ -49,9 +49,9 @@ const filtersSlice = createSlice({
       state.reset = action.payload;
     },
     resetFilters: (state) => {
-      state.fuel = [];
-      state.transmission = [];
-      state.reset = 'Qualsiasi';
+      state.fuel = initialState.fuel;
+      state.transmission = initialState.transmission;
+      state.reset = !state.reset;
     },
   },
 });

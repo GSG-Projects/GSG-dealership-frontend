@@ -11,7 +11,6 @@ export default function RangeBox({ dropDown, filterType }) {
     const filterOptions = [cilindrata, price, power];
     
     const options = filterOptions[filterType] || [];
-    console.log(options);
     const [isVisible, setIsVisible] = useState(dropDown);
     const timeoutRef = useRef(null);
 
