@@ -6,7 +6,7 @@ export default function Power({ dropDown }) {
             <div className={`absolute -left-2/2 top-[3.9rem] transition-all ease-in-out duration-300 z-50`}>
                 <RangeBox
                     dropDown={dropDown} 
-                    filterType="power"
+                    filterType={2}
                 />
             </div>
         </>
