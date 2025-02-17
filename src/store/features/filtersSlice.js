@@ -50,6 +50,8 @@ const filtersSlice = createSlice({
     },
     resetFilters: (state) => {
       state.reset = 'Qualsiasi';
+      state.fuel = [];
+      state.transmission = [];
     },
   },
 });
