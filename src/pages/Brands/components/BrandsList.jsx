@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBrands } from "../../../store/API/Brands";
 import { Link } from "react-router-dom";
 import Loading from "../../../components/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function SingleBrand() {
     const dispatch = useDispatch();
@@ -15,15 +16,97 @@ export default function SingleBrand() {
     }, [dispatch, status]);
 
     if (status === 'loading') {
+        const loadingBrands = 9;
+
         return (
-            <div className="flex justify-center items-center h-screen">
-                <div className="scale-150">
-                    <Loading />
+                <div className="w-7/12 grid grid-cols-3 gap-20 m-auto py-20 h-full">
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div
+                        className="aspect-video bg-black/50 border border-white flex gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
+                    >
+                        <div className="w-9">
+                            <Loading />
+                        </div>
+                    </div>
                 </div>
-            </div>
         );
+
+
     }
-    if (status === 'failed') return <p>Error: {error}</p>;
+    if (status === 'failed') {
+        return(
+            <>
+                <div className="py-28 relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-neutral-900">
+                    <div className="uppercase gap-4 text-neutral-50 p-24 text-center font-kanit flex w-fit mx-auto flex-col items-center justify-center">
+                        <FontAwesomeIcon
+                            // icon={}
+                        />
+                        <p className="text-7xl font-bold">
+                            ERROR 401
+                        </p>
+                        <p className="text-4xl font-semibold">
+                            {error}
+                        </p>
+                    </div>
+                </div>
+            </>
+        );
+    };
 
     return(
         <>

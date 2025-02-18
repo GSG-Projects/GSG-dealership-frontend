@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchModels = createAsyncThunk('models/fetch', async () => {
   const response = await fetch('http://127.0.0.1:8000/api/car-models');
   if (!response.ok) {
-    throw new Error('Errore durante il fetch dei Modelli');
+    throw new Error('Errore durante il caricamento dei Modelli');
   }
   return response.json();
 });
@@ -16,7 +16,7 @@ export const addModel = createAsyncThunk('models/add', async (newModel) => {
     body: JSON.stringify(newModel),
   });
   if (!response.ok) {
-    throw new Error('Errore durante l\'aggiunta del Modello');
+    throw new Error("Errore durante l'aggiunta del Modello");
   }
   return response.json();
 });

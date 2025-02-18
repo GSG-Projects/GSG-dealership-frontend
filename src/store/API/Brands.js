@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchBrands = createAsyncThunk('brands/fetch', async () => {
   const response = await fetch('http://127.0.0.1:8000/api/brands');
   if (!response.ok) {
-    throw new Error('Errore durante il fetch dei brands');
+    throw new Error('Errore durante il caricamento dei brands');
   }
   return response.json();
 });
@@ -16,7 +16,7 @@ export const addBrand = createAsyncThunk('brands/add', async (newBrand) => {
     body: JSON.stringify(newBrand),
   });
   if (!response.ok) {
-    throw new Error('Errore durante l\'aggiunta del brand');
+    throw new Error("Errore durante l'aggiunta del brand");
   }
   return response.json();
 });
