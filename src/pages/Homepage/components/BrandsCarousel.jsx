@@ -5,6 +5,8 @@ import { animate } from "motion";
 import { fetchBrands } from '../../../store/API/Brands';
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../../../components/Loading';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 export default function BrandsCarousel() {
     let [ref, { width }] = useMeasure();
@@ -36,15 +38,37 @@ export default function BrandsCarousel() {
 
     if (status === 'loading') {
         return (
-            <div className="relative bg-neutral-900 overflow-hidden h-44 flex justify-center items-center">
+            <div className="relative bg-neutral-900 h-44 flex justify-center items-center">
             <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
-                <div className="scale-110">
+                <div className="w-9">
                     <Loading />
                 </div>
             </div>
         );
     }
-    if (status === 'failed') return <p>Error: {error}</p>;
+    if (status === 'failed') {
+        return(
+            <>
+                <div className="relative bg-neutral-900 overflow-hidden h-44 flex flex-col justify-center items-center gap-2 text-neutral-50 uppercase font-kanit">
+                    <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-black/65 via-transparent to-black/65 z-10"></div>
+                    <p className="text-4xl font-bold flex gap-5">
+                        <FontAwesomeIcon
+                            icon={faTriangleExclamation}
+                        />
+                        <span>
+                            ERROR 401
+                        </span>
+                        <FontAwesomeIcon
+                            icon={faTriangleExclamation}
+                        />
+                    </p>
+                    <p className="text-xl">
+                        {error}
+                    </p>
+                </div>
+            </>
+        );
+    };
 
    return(
     <div className="relative bg-neutral-900 overflow-hidden h-44">

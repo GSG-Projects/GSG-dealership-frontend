@@ -6,7 +6,7 @@ import { fetchModels } from "../../../store/API/CarModels";
 import { fetchCars } from "../../../store/API/Cars";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import './Vetrina.css';
 
 import ButtonModels from "./Vetrina/ButtonModels";
@@ -116,8 +116,8 @@ export default function Vetrina() {
                 <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
                     Vetrina
                 </div>
-                <div className="h-full relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
-                    <div className="scale-150 flex justify-center items-center h-64">
+                <div className="h-full relative bg-gradient-to-b from-black to-neutral-900">
+                    <div className="w-16 flex mx-auto items-center h-64">
                         <Loading />
                     </div>
                 </div>
@@ -125,16 +125,33 @@ export default function Vetrina() {
         );
     }
 
-    if (modelsStatus === 'failed') {
-        return <p>Error loading models: {modelsError}</p>;
-    }
+    if (modelsStatus === 'failed' || brandsStatus === 'failed' || carsStatus === 'failed') {
+        return (
+            <>
+                <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
+                    Vetrina
+                </div>
 
-    if (brandsStatus === 'failed') {
-        return <p>Error loading brands: {brandsError}</p>;
-    }
-
-    if (carsStatus === 'failed') {
-        return <p>Error loading cars: {carsError}</p>;
+                <div className="py-28 relative bg-gradient-to-b from-black to-neutral-900">
+                    <div className="uppercase gap-4 text-neutral-50 p-24 text-center font-kanit flex w-fit mx-auto flex-col items-center justify-center">
+                        <p className="text-7xl font-bold flex gap-10">
+                            <FontAwesomeIcon
+                                icon={faTriangleExclamation}
+                            />
+                            <span>
+                                ERROR 401
+                            </span>
+                            <FontAwesomeIcon
+                                icon={faTriangleExclamation}
+                            />
+                        </p>
+                        <p className="text-4xl font-semibold">
+                            {modelsError}
+                        </p>
+                    </div>
+                </div>
+            </>
+        );
     }
 
     return (
