@@ -6,7 +6,7 @@ import { fetchModels } from "../../../store/API/CarModels";
 import { fetchCars } from "../../../store/API/Cars";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import './Vetrina.css';
 
 import ButtonModels from "./Vetrina/ButtonModels";
@@ -134,11 +134,16 @@ export default function Vetrina() {
 
                 <div className="py-28 relative bg-gradient-to-b from-black to-neutral-900">
                     <div className="uppercase gap-4 text-neutral-50 p-24 text-center font-kanit flex w-fit mx-auto flex-col items-center justify-center">
-                        <FontAwesomeIcon
-                            // icon={}
-                        />
-                        <p className="text-7xl font-bold">
-                            ERROR 401
+                        <p className="text-7xl font-bold flex gap-10">
+                            <FontAwesomeIcon
+                                icon={faTriangleExclamation}
+                            />
+                            <span>
+                                ERROR 401
+                            </span>
+                            <FontAwesomeIcon
+                                icon={faTriangleExclamation}
+                            />
                         </p>
                         <p className="text-4xl font-semibold">
                             {modelsError}
