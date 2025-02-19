@@ -11,7 +11,7 @@ import './Vetrina.css';
 
 import ButtonModels from "./Vetrina/ButtonModels";
 import ModelName from "./Vetrina/ModelName";
-import Loading from "../../../components/Loading";
+import "../../../components/LoadingBox.css";
 import ModelInfo from "./Vetrina/ModelInfo";
 
 export default function Vetrina() {
@@ -116,9 +116,30 @@ export default function Vetrina() {
                 <div className="font-bold font-oswald text-6xl bg-gradient-to-b from-neutral-950 to-black text-white/80 h-56 uppercase flex justify-center items-center">
                     Vetrina
                 </div>
-                <div className="h-full relative bg-gradient-to-b from-black to-neutral-900">
-                    <div className="w-16 flex mx-auto items-center h-64">
-                        <Loading />
+                <div className="h-screen relative bg-gradient-to-b from-black to-neutral-900 overflow-visible">
+
+                    {/* Container Image */}
+                    <div className="absolute left-0 top-0 flex h-full w-full">
+                        {Array.from({length: 4}, (_, index) => (
+                            <div
+                                key={index}
+                                onMouseEnter={() => handleHover(index)}
+                                className={`transition-all bg-gradient-to-br from-white/20 via-white/15 to-white/20 relative h-full flex ease-in-out duration-500 overflow-hidden shadow-inner 
+                                    ${index === currentIndex ? "blur-none opacity-100 w-full" : "opacity-30 blur-sm w-4/12"}`
+                                }
+                                style={{
+                                    clipPath: `${index === currentIndex ? 'polygon(13% 0, 100% 0, 87% 100%, 0 100%)' : 'polygon(40% 0, 100% 0, 60% 100%, 0 100%)'}`,
+                                }}
+                            >
+                                {/* Loading */}
+                                <div 
+                                    className={`w-screen object-cover transition-all ease-in-out duration-700 bg-white/20 blur-3xl h-1/4 absolute loading-large opacity-0 ${
+                                        index === currentIndex ? 'saturate-100 scale-100' : 'saturate-0 scale-150'
+                                    }`}
+                                >
+                                </div>   
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

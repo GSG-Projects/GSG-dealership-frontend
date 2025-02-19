@@ -4,7 +4,7 @@ import { fetchBrands } from "../../../store/API/Brands";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-import './BrandsList.css';
+import '../../../components/LoadingBox.css';
 
 export default function SingleBrand() {
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function SingleBrand() {
                         className="aspect-video relative bg-black/50 border border-white flex overflow-hidden gap-7 flex-col justify-center items-center py-28 backdrop:blur-md z-10 hover:bg-white/20 hover:scale-105 transition-all ease-in-out duration-300 shadow-sm hover:shadow-xl"
                     >
                         <div 
-                            className="bg-white/20 blur-md w-full h-1/4 absolute loading opacity-0"
+                            className="bg-white/20 blur-2xl w-full h-1/4 absolute loading opacity-0"
                         >
                         </div>
                     </div>
