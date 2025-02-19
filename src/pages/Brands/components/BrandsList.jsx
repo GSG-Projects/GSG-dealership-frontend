@@ -4,7 +4,7 @@ import { fetchBrands } from "../../../store/API/Brands";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-import './BrandsList.css';
+import '../../../components/LoadingBox.css';
 
 export default function SingleBrand() {
     const dispatch = useDispatch();

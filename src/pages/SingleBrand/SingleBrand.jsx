@@ -46,7 +46,7 @@ export default function SingleBrand() {
     if (brandStatus === 'loading' || modelsStatus === 'loading' || carsStatus === 'loading') {
         return (
              <div className="flex justify-center items-center h-screen bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950">
-                <div className="scale-150">
+                <div className="w-24">
                     <Loading />
                 </div>
             </div>
