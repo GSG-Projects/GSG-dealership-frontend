@@ -120,7 +120,7 @@ export default function Vetrina() {
 
                     {/* Container Image */}
                     <div className="absolute left-0 top-0 flex h-full w-full">
-                        {Array.from({length: 5}, (_, index) => (
+                        {Array.from({length: 4}, (_, index) => (
                             <div
                                 key={index}
                                 onMouseEnter={() => handleHover(index)}
