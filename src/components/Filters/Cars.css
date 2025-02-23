@@ -1,0 +1,31 @@
+@keyframes carsIn {
+    0% {
+        opacity: 0;
+        transform: translateY(25%);
+        width: 90%;
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+    }
+}
+
+@keyframes carsOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    } 
+    100% {
+        opacity: 0;
+        transform: translateY(25%);
+    }
+}
+
+.cars-in {
+    animation: carsIn 1s forwards;
+}
+
+.cars-out {
+    animation: carsOut 1s forwards;
+}
