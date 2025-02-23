@@ -11,8 +11,6 @@ export default function InputRange({ children, min, options }) {
         setSelectedValue(resetValue);
     }, [resetValue]);
 
-    console.log(selectedValue);
-
     const handleChange = (e) => {
         setSelectedValue(e.target.value);
     };
