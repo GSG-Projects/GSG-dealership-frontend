@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import CarInfo from "./CarInfo";
 import { useMeasure } from "@uidotdev/usehooks";
 
+import '../components/Filters/Cars.css';
+
 export default function ModelItem({ image, name, id, alimentazione, prezzo, cilindrata, potenza }) {
     const [barState, setBarState] = useState({});
     const [hovered, setHovered] = useState(false);
@@ -21,7 +23,7 @@ export default function ModelItem({ image, name, id, alimentazione, prezzo, cili
     }
 
     return (
-        <Link className="border mx-auto h-[30rem] border-white w-full transition-all ease-in-out duration-500 overflow-hidden">
+        <Link className="border mx-auto h-[30rem] border-white w-full transition-all ease-in-out cars-in duration-500 overflow-hidden">
             <div
                 className="text-white h-full relative shadow-lg"
                 onMouseEnter={() => handleEnter(id)}
