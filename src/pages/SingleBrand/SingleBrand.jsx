@@ -96,10 +96,10 @@ export default function SingleBrand() {
             </motion.div>
             
             {/* Lista Modelli */}
-            <div className="relative h-auto border-t">
+            <div className="relative border-t">
                 <FilterComp />
                 
-                <div className="w-full h-auto grid grid-cols-2 gap-24 border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
+                <div className="w-full grid grid-cols-2 gap-24 border-white p-20 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
                 {filteredModels.length > 0 ? (
                     filteredModels.map((model) => {
                         const car = cars.find((car) => car.car_model_id === model.id);
@@ -117,7 +117,11 @@ export default function SingleBrand() {
                         );
                     })
                 ) : (
-                    <p className="text-center text-white">Nessun modello disponibile</p>
+                    <div className="flex justify-center h-[40rem] items-center col-span-2">
+                        <p className="text-6xl font-kanit text-white">
+                            Nessun modello disponibile
+                        </p>
+                    </div>
                 )}
                 </div>
             </div>
